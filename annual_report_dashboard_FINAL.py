@@ -1,5 +1,7 @@
 
+
 import json
+from io import BytesIO
 import re
 from pathlib import Path
 from typing import Optional
@@ -44,6 +46,31 @@ section[data-testid="stSidebar"]{
   border-right: 1px solid rgba(255,255,255,.06);
 }
 section[data-testid="stSidebar"] *{ color: rgba(255,255,255,.95) !important; }
+section[data-testid="stSidebar"] div[data-testid="stDownloadButton"] button,
+section[data-testid="stSidebar"] div.stDownloadButton button,
+section[data-testid="stSidebar"] button[kind="secondary"]{
+  background: linear-gradient(135deg, #5a7d4d 0%, #7a1f5c 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,.32) !important;
+  border-radius: 12px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.22) !important;
+}
+section[data-testid="stSidebar"] div[data-testid="stDownloadButton"] button p,
+section[data-testid="stSidebar"] div.stDownloadButton button p,
+section[data-testid="stSidebar"] button[kind="secondary"] p,
+section[data-testid="stSidebar"] div[data-testid="stDownloadButton"] button span,
+section[data-testid="stSidebar"] div.stDownloadButton button span,
+section[data-testid="stSidebar"] button[kind="secondary"] span{
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+section[data-testid="stSidebar"] div[data-testid="stDownloadButton"] button:hover,
+section[data-testid="stSidebar"] div.stDownloadButton button:hover,
+section[data-testid="stSidebar"] button[kind="secondary"]:hover{
+  filter: brightness(1.08);
+  border-color: #ffffff !important;
+}
 .hero{
   position:relative;
   overflow:hidden;
@@ -1716,6 +1743,20 @@ EXPORT_REGION_HISTORY = [{"entity": "Africa", "fy_start": 2009, "fy_label": "FY2
 EXPORT_PORT_HISTORY = [{"entity": "Ahmedabad", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 128.56767617416236}, {"entity": "Ahmedabad", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 531.8724706415877}, {"entity": "Ahmedabad", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 205.0278993533958}, {"entity": "Ahmedabad", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 164.50761781543844}, {"entity": "Ahmedabad", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 416.7209784379926}, {"entity": "Ahmedabad", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 519.3345757398118}, {"entity": "Ahmedabad", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 295.2781492363731}, {"entity": "Ahmedabad", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 273.6873857752661}, {"entity": "Bangalore", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 500.70851255561934}, {"entity": "Bangalore", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 137.97615375101535}, {"entity": "Bangalore", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 27.378016134929396}, {"entity": "Bangalore", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 5.052645517223394}, {"entity": "Bangalore", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 2608.839759584708}, {"entity": "Bangalore", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 3376.0836324627503}, {"entity": "Bangalore", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 5029.494359705449}, {"entity": "Bangalore", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 5291.58233137299}, {"entity": "Bangalore", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 1515.313042869221}, {"entity": "Bangalore", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 63.09997904103268}, {"entity": "Bangalore", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 51.184855610833466}, {"entity": "Bangalore", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 28.16957084274661}, {"entity": "Bangalore", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 64.89063647581403}, {"entity": "Bangalore", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 168.31102019798197}, {"entity": "Bangalore", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 181.28827253833256}, {"entity": "Bangalore", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 238.27952062326307}, {"entity": "Bangalore", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 265.4932887699076}, {"entity": "Chennai", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 538.0748665268262}, {"entity": "Chennai", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 1052.8696278432333}, {"entity": "Chennai", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 1298.0628119903306}, {"entity": "Chennai", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 1026.4400665422083}, {"entity": "Chennai", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 327.1956910728164}, {"entity": "Chennai", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 340.31796604224405}, {"entity": "Chennai", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 447.56757795505433}, {"entity": "Chennai", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 523.0614213748916}, {"entity": "Chennai", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 550.2720653907761}, {"entity": "Chennai", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 451.54836722691533}, {"entity": "Chennai", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 578.9128128444804}, {"entity": "Chennai", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 541.6236847739289}, {"entity": "Chennai", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 1181.8038815755997}, {"entity": "Chennai", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 994.4559259765015}, {"entity": "Chennai", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 582.1166158683153}, {"entity": "Chennai", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 910.6834618388282}, {"entity": "Chennai", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 794.8029186702095}, {"entity": "Cochin", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 3306.3133878459107}, {"entity": "Cochin", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 3950.845405971075}, {"entity": "Cochin", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 5739.696403542245}, {"entity": "Cochin", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 5819.889380852993}, {"entity": "Cochin", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 694.6302226384574}, {"entity": "Cochin", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 217.0393230632045}, {"entity": "Cochin", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 715.9756227834303}, {"entity": "Cochin", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 1091.4828004112294}, {"entity": "Cochin", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 2986.4654172327596}, {"entity": "Cochin", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 5915.111509616956}, {"entity": "Cochin", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 6254.042418205071}, {"entity": "Cochin", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 282.7883559542801}, {"entity": "Cochin", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 102.58476413836028}, {"entity": "Cochin", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 100.86025065022994}, {"entity": "Cochin", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 164.03227376371515}, {"entity": "Cochin", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 164.5574047799245}, {"entity": "Cochin", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 159.5520206591902}, {"entity": "Coimbatore", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 0.8795349610732337}, {"entity": "Coimbatore", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 1.2155791414705617}, {"entity": "Coimbatore", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 1.5890817093318135}, {"entity": "Coimbatore", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 1.182132906851381}, {"entity": "Coimbatore", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 0.6781806814600355}, {"entity": "Coimbatore", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 72.82410521827529}, {"entity": "Coimbatore", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 69.70313728458756}, {"entity": "Coimbatore", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 16.55606911446339}, {"entity": "Coimbatore", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 1.0745939359668193}, {"entity": "Coimbatore", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 6.40915690151535}, {"entity": "Hyderabad", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 123.91604667075384}, {"entity": "Hyderabad", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 305.90314477772364}, {"entity": "Hyderabad", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 447.0079779141453}, {"entity": "Hyderabad", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 665.3699200898492}, {"entity": "Hyderabad", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 487.68425603837574}, {"entity": "Hyderabad", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 687.1315672498189}, {"entity": "Hyderabad", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 1242.9521735021367}, {"entity": "Hyderabad", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 1824.229756774562}, {"entity": "Hyderabad", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 1551.9944526732384}, {"entity": "Hyderabad", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 141.75822777126888}, {"entity": "Hyderabad", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 108.80873077584629}, {"entity": "Hyderabad", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 66.81714548267217}, {"entity": "Hyderabad", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 196.16298076650884}, {"entity": "Hyderabad", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 164.38266454649948}, {"entity": "Hyderabad", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 184.6318650156295}, {"entity": "Hyderabad", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 231.502179150604}, {"entity": "Hyderabad", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 214.54745241741105}, {"entity": "Jaipur", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 570.5121260655047}, {"entity": "Jaipur", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 647.43351259184}, {"entity": "Jaipur", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 766.7010502432373}, {"entity": "Jaipur", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 717.82464130774}, {"entity": "Jaipur", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 826.9891332454337}, {"entity": "Jaipur", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 846.1545844060664}, {"entity": "Jaipur", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 847.682419985806}, {"entity": "Jaipur", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 848.6354301550431}, {"entity": "Jaipur", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 825.7508323429442}, {"entity": "Jaipur", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 810.9912716441985}, {"entity": "Jaipur", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 729.0904465167307}, {"entity": "Jaipur", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 559.0869342695198}, {"entity": "Jaipur", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 950.8091421429806}, {"entity": "Jaipur", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 1177.4638980905747}, {"entity": "Jaipur", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 1360.801375262038}, {"entity": "Jaipur", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 2104.527938994421}, {"entity": "Jaipur", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 1908.0698073743063}, {"entity": "Kolkata", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 1018.1588731359889}, {"entity": "Kolkata", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 2099.0345770857925}, {"entity": "Kolkata", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 2585.58670579152}, {"entity": "Kolkata", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 2192.6911522788578}, {"entity": "Kolkata", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 2055.703509695289}, {"entity": "Kolkata", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 1162.4662836825707}, {"entity": "Kolkata", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 789.6889378548015}, {"entity": "Kolkata", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 792.540650365859}, {"entity": "Kolkata", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 802.6204511763553}, {"entity": "Kolkata", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 783.7003675287976}, {"entity": "Kolkata", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 571.4072986004041}, {"entity": "Kolkata", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 390.54677398571056}, {"entity": "Kolkata", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 985.8167183736217}, {"entity": "Kolkata", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 1158.269269470753}, {"entity": "Kolkata", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 1262.622539113342}, {"entity": "Kolkata", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 1650.5020787913234}, {"entity": "Kolkata", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 1509.950243672684}, {"entity": "Mumbai", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 17101.335553237444}, {"entity": "Mumbai", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 23789.016974934588}, {"entity": "Mumbai", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 26560.83596314297}, {"entity": "Mumbai", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 22930.949318115432}, {"entity": "Mumbai", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 26352.3838206716}, {"entity": "Mumbai", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 27124.23526350469}, {"entity": "Mumbai", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 25395.320248329623}, {"entity": "Mumbai", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 27516.67502714495}, {"entity": "Mumbai", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 28320.944450933603}, {"entity": "Mumbai", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 28563.324673913576}, {"entity": "Mumbai", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 23194.82231705443}, {"entity": "Mumbai", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 18813.55148506011}, {"entity": "Mumbai", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 30395.836129678362}, {"entity": "Mumbai", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 27974.688983404714}, {"entity": "Mumbai", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 22186.743828211776}, {"entity": "Mumbai", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 19653.23543408089}, {"entity": "Mumbai", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 18579.41402520839}, {"entity": "New Delhi", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 2011.9541007598916}, {"entity": "New Delhi", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 4762.388627646005}, {"entity": "New Delhi", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 3020.6082284648855}, {"entity": "New Delhi", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 1384.490162862771}, {"entity": "New Delhi", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 1779.9118696105804}, {"entity": "New Delhi", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 3347.3062707172894}, {"entity": "New Delhi", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 2046.5594680459972}, {"entity": "New Delhi", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 1996.0559842158327}, {"entity": "New Delhi", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 1933.6675835063897}, {"entity": "New Delhi", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 1937.4732899618402}, {"entity": "New Delhi", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 1714.4675333818018}, {"entity": "New Delhi", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 1021.7686289823909}, {"entity": "New Delhi", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 1300.770841423497}, {"entity": "New Delhi", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 1143.9658797473737}, {"entity": "New Delhi", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 3116.5388537612453}, {"entity": "New Delhi", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 1675.8034294066747}, {"entity": "New Delhi", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 1781.5794066847893}, {"entity": "SDB", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 42.22796942440087}, {"entity": "SDB", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 126.33629088715561}, {"entity": "Surat", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 5397.793240241442}, {"entity": "Surat", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 8728.86784897652}, {"entity": "Surat", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 6164.869212530488}, {"entity": "Surat", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 8697.681474748071}, {"entity": "Surat", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 4894.64822867425}, {"entity": "Surat", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 2707.196597331862}, {"entity": "Surat", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 2655.9716847167883}, {"entity": "Surat", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 3251.662063865975}, {"entity": "Surat", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 2470.6919797851374}, {"entity": "Surat", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 915.2930251417303}, {"entity": "Surat", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 1846.016475154839}, {"entity": "Surat", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 3576.2125860547544}, {"entity": "Surat", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 4214.3281989542875}, {"entity": "Surat", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 4421.600267840454}, {"entity": "Surat", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 2715.2912219832897}, {"entity": "Surat", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 1642.388280378205}, {"entity": "Surat", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 2000.5858577047359}, {"entity": "Visakhapatnam", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 30.240804706074062}, {"entity": "Visakhapatnam", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 70.8879294107647}, {"entity": "Visakhapatnam", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 177.5785855285285}, {"entity": "Visakhapatnam", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 133.03186983073311}, {"entity": "Visakhapatnam", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 142.05605868281836}, {"entity": "Visakhapatnam", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 99.83186009068585}, {"entity": "Visakhapatnam", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 4.926372748866455}, {"entity": "Visakhapatnam", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 4.594735969772399}, {"entity": "Visakhapatnam", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 6.154291806798473}, {"entity": "Visakhapatnam", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 5.643772198934176}, {"entity": "Visakhapatnam", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 14.575482453866284}, {"entity": "Visakhapatnam", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 19.98920535434259}, {"entity": "Visakhapatnam", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 11.713436317306664}, {"entity": "Visakhapatnam", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 16.331967852629706}, {"entity": "Visakhapatnam", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 12.44457446217063}, {"entity": "Visakhapatnam", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 62.07448753279526}, {"entity": "Visakhapatnam", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 3.2776436361877312}, {"entity": "Totals", "fy_start": 2009, "fy_label": "FY2010-11", "value_mn": 30599.887046706528}, {"entity": "Totals", "fy_start": 2010, "fy_label": "FY2011-12", "value_mn": 45546.43938213003}, {"entity": "Totals", "fy_start": 2011, "fy_label": "FY2012-13", "value_mn": 46789.91403699261}, {"entity": "Totals", "fy_start": 2012, "fy_label": "FY2013-14", "value_mn": 43574.60276505273}, {"entity": "Totals", "fy_start": 2013, "fy_label": "FY2014-15", "value_mn": 40170.72073059579}, {"entity": "Totals", "fy_start": 2014, "fy_label": "FY2015-16", "value_mn": 39980.587453769454}, {"entity": "Totals", "fy_start": 2015, "fy_label": "FY2016-17", "value_mn": 39245.84200291254}, {"entity": "Totals", "fy_start": 2016, "fy_label": "FY2017-18", "value_mn": 43157.07627076557}, {"entity": "Totals", "fy_start": 2017, "fy_label": "FY2018-19", "value_mn": 40964.94916165319}, {"entity": "Totals", "fy_start": 2018, "fy_label": "FY2019-20", "value_mn": 39722.92131712093}, {"entity": "Totals", "fy_start": 2019, "fy_label": "FY2020-21", "value_mn": 35595.20084123989}, {"entity": "Totals", "fy_start": 2020, "fy_label": "FY2021-22", "value_mn": 25505.582270113853}, {"entity": "Totals", "fy_start": 2021, "fy_label": "FY2022-23", "value_mn": 39569.22434766178}, {"entity": "Totals", "fy_start": 2022, "fy_label": "FY2023-24", "value_mn": 37737.0511062157}, {"entity": "Totals", "fy_start": 2023, "fy_label": "FY2024-25", "value_mn": 32285.84599571967}, {"entity": "Totals", "fy_start": 2024, "fy_label": "FY2025-26", "value_mn": 28671.060334237704}, {"entity": "Totals", "fy_start": 2025, "fy_label": "FY2026-27", "value_mn": 27617.29634146023}]
 
 DATA["export_country_history"] = EXPORT_COUNTRY_HISTORY
+DATA["import_regions"] = [
+    {"region": "Middle East", "fy2021_mn": 12149.5058319092, "fy2025_mn": 10870.476739487, "fy2021_share_pct": 45.1956208115453, "fy2025_share_pct": 47.6232615836644},
+    {"region": "Asia", "fy2021_mn": 3896.96850681623, "fy2025_mn": 5697.12787712584, "fy2021_share_pct": 14.4965493564378, "fy2025_share_pct": 24.9589615681154},
+    {"region": "Europe Union 27", "fy2021_mn": 5797.18671210465, "fy2025_mn": 2055.72495920646, "fy2021_share_pct": 21.5652764844048, "fy2025_share_pct": 9.00607487809012},
+    {"region": "North America", "fy2021_mn": 1372.72092700398, "fy2025_mn": 1580.22071800111, "fy2021_share_pct": 5.1064607363702, "fy2025_share_pct": 6.92290378948405},
+    {"region": "Africa", "fy2021_mn": 1535.12176440801, "fy2025_mn": 1078.8495048279, "fy2021_share_pct": 5.71058462159957, "fy2025_share_pct": 4.72641020344526},
+    {"region": "CIS Countries", "fy2021_mn": 834.740575090155, "fy2025_mn": 361.909032662443, "fy2021_share_pct": 3.10519777756734, "fy2025_share_pct": 1.5855135837205},
+    {"region": "Latin America", "fy2021_mn": 42.5773638003183, "fy2025_mn": 107.52644443871, "fy2021_share_pct": 0.158385897837954, "fy2025_share_pct": 0.471070415160807},
+    {"region": "Europe-Others", "fy2021_mn": 88.6897911829642, "fy2025_mn": 68.4179039643915, "fy2021_share_pct": 0.329922074824874, "fy2025_share_pct": 0.299736967898244},
+    {"region": "East Asia (Oceania)", "fy2021_mn": 5.03251079767861, "fy2025_mn": 10.1661024617707, "fy2021_share_pct": 0.0187207161253034, "fy2025_share_pct": 0.0445374171184777},
+    {"region": "Others", "fy2021_mn": 1159.4981566986423, "fy2025_mn": 1009.39, "fy2021_share_pct": 4.31327160756414, "fy2025_share_pct": 4.419432699540294},
+    {"region": "TOTAL", "fy2021_mn": 26882.04213981183, "fy2025_mn": 22839.8092837797, "fy2021_share_pct": 100.0, "fy2025_share_pct": 100.0},
+]
+
 DATA["export_region_history"] = EXPORT_REGION_HISTORY
 DATA["export_port_history"] = EXPORT_PORT_HISTORY
 
@@ -1787,6 +1828,7 @@ def add_line_labels(fig, fmt: str = "{:,.2f}"):
 
 def add_bar_labels(fig, orientation: str = "h", fmt: str = "{:,.2f}"):
     for tr in getattr(fig, "data", []):
+        ttype = getattr(tr, "type", "") or ""
         arr = getattr(tr, "x", None) if orientation == "h" else getattr(tr, "y", None)
         if arr is None:
             continue
@@ -1796,7 +1838,7 @@ def add_bar_labels(fig, orientation: str = "h", fmt: str = "{:,.2f}"):
             vals = [arr]
         txt = []
         for v in vals:
-            if v is None or (isinstance(v, float) and np.isnan(v)):
+            if v is None or pd.isna(v):
                 txt.append("")
             else:
                 try:
@@ -1804,8 +1846,19 @@ def add_bar_labels(fig, orientation: str = "h", fmt: str = "{:,.2f}"):
                 except Exception:
                     txt.append(str(v))
         tr.text = txt
-        tr.textposition = "outside"
-        tr.cliponaxis = False
+        if ttype == "bar":
+            tr.textposition = "outside"
+            tr.cliponaxis = False
+        elif ttype == "scatter":
+            tr.textposition = "top center"
+            mode = getattr(tr, "mode", "") or ""
+            if "text" not in mode:
+                tr.mode = mode + "+text" if mode else "lines+text"
+        else:
+            try:
+                tr.textposition = "top center"
+            except Exception:
+                pass
 
 def _trace_has_labels(tr) -> bool:
     txt = getattr(tr, "text", None)
@@ -1879,6 +1932,102 @@ def render_table(df: pd.DataFrame, formatters: dict[str, object] | None = None, 
         except Exception:
             pass
     st.dataframe(show, use_container_width=True, height=height, hide_index=True)
+
+
+def _excel_safe_sheet_name(name: str) -> str:
+    text = re.sub(r"[\\/*?:\[\]]", "_", str(name)).strip() or "Sheet1"
+    return text[:31]
+
+
+def _excel_ready_df(obj) -> pd.DataFrame:
+    if isinstance(obj, pd.DataFrame):
+        df = obj.copy()
+    else:
+        df = pd.DataFrame(obj)
+    for col in df.columns:
+        if pd.api.types.is_datetime64_any_dtype(df[col]):
+            df[col] = df[col].astype(str)
+    return df
+
+
+def build_excel_bytes(sheets: dict[str, pd.DataFrame]) -> bytes:
+    output = BytesIO()
+    with pd.ExcelWriter(output, engine="openpyxl") as writer:
+        used = set()
+        for raw_name, obj in sheets.items():
+            try:
+                df = _excel_ready_df(obj)
+            except Exception:
+                continue
+            if df is None:
+                continue
+            sheet = _excel_safe_sheet_name(raw_name)
+            base = sheet
+            idx = 1
+            while sheet in used:
+                suffix = f"_{idx}"
+                sheet = f"{base[:31-len(suffix)]}{suffix}"
+                idx += 1
+            used.add(sheet)
+            df.to_excel(writer, sheet_name=sheet, index=False)
+    return output.getvalue()
+
+
+def render_excel_download(label: str, sheets: dict[str, pd.DataFrame], file_name: str, key: str, sidebar: bool = False):
+    if not sheets:
+        return
+    data = build_excel_bytes(sheets)
+    target = st.sidebar if sidebar else st
+    target.download_button(
+        label=label,
+        data=data,
+        file_name=file_name,
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        key=key,
+        use_container_width=True,
+    )
+
+
+def build_master_download_sheets() -> dict[str, pd.DataFrame]:
+    sheets: dict[str, pd.DataFrame] = {
+        "3.1 Annual Trends": df_from("annual_trends"),
+        "3.2 Gross vs Net Exports": df_from("gross_net_exports"),
+        "3.2a Monthly Exports": df_from("monthly_exports"),
+        "3.3 Region Targets": df_from("region_targets"),
+        "3.4 Country Targets": df_from("country_targets"),
+        "3.4 Commodity Targets": df_from("commodity_targets"),
+        "3.5 Export Key Commodities": df_from("export_key_commodities"),
+        "3.6 Export Basket": df_from("export_basket"),
+        "3.8 Export Regions": df_from("export_regions"),
+        "3.9 Export Port Performance": df_from("export_port_performance"),
+        "3.10 Monthly Imports": df_from("monthly_imports"),
+        "3.11 Import Commodities": df_from("import_commodities"),
+        "3.13 Import Regions": df_from("import_regions"),
+        "3.14a DTA SEZ Recent": df_from("dta_sez_recent"),
+        "3.14b DTA SEZ Long": df_from("dta_sez_long"),
+        "3.15 FDI": df_from("fdi"),
+    }
+    if DATA.get("top_export_destinations", {}).get("fy2020"):
+        sheets["3.7 Export Destinations FY2021-22"] = pd.DataFrame(DATA["top_export_destinations"]["fy2020"])
+    if DATA.get("top_export_destinations", {}).get("fy2025"):
+        sheets["3.7 Export Destinations FY2025-26"] = pd.DataFrame(DATA["top_export_destinations"]["fy2025"])
+    if DATA.get("top_import_countries", {}).get("fy2020"):
+        sheets["3.12 Import Countries FY2020-21"] = pd.DataFrame(DATA["top_import_countries"]["fy2020"])
+    if DATA.get("top_import_countries", {}).get("fy2025"):
+        sheets["3.12 Import Countries FY2025-26"] = pd.DataFrame(DATA["top_import_countries"]["fy2025"])
+    try:
+        export_books = load_product_workbook("EXPORT PRODUCTS.xlsx")
+        for name, df in export_books.items():
+            sheets[f"Export Products - {name}"] = df
+    except Exception:
+        pass
+    try:
+        import_books = load_product_workbook("Import Products.xlsx")
+        for name, df in import_books.items():
+            sheets[f"Import Products - {name}"] = df
+    except Exception:
+        pass
+    return sheets
 
 
 
@@ -2260,6 +2409,7 @@ def render_product_workbook_page(kind: str):
     for tab, sheet in zip(tabs, ordered_sheets):
         with tab:
             st.markdown(f"<div class='report-band'>{label_map.get(sheet, sheet)} — Country-wise {kind.lower()} analysis</div>", unsafe_allow_html=True)
+            render_excel_download("Download this tab as Excel", {label_map.get(sheet, sheet): books[sheet]}, f"{kind.lower()}_{sheet.replace(' ', '_')}.xlsx", key=f"dl_{kind.lower()}_{sheet}")
             render_product_country_tab(label_map.get(sheet, sheet), books[sheet], kind, f"{kind.lower()}_{sheet.replace(' ', '_').replace('&', 'and')}")
             st.caption("Top-N is applied to the detailed table and charts. Pie charts group the remaining countries into Others.")
 
@@ -2298,6 +2448,13 @@ page = st.sidebar.radio(
 st.sidebar.markdown(
     "<div class='note'>This version is standalone for the embedded annual-report sections. Product pages read the bundled Export Products and Import Products workbooks if they are placed next to the app.</div>",
     unsafe_allow_html=True,
+)
+render_excel_download(
+    "⬇ Download master Excel workbook",
+    build_master_download_sheets(),
+    "annual_report_dashboard_master.xlsx",
+    key="master_workbook_download",
+    sidebar=True,
 )
 
 annual_df = df_from("annual_trends").copy()
@@ -2485,6 +2642,7 @@ def section_32():
             "fy2026_mn": "FY2025-26 (US$ mn)",
             "growth_pct": "% Export Growth (Y-o-Y)",
         })
+        render_excel_download("Download this tab as Excel", {"3.2 Monthly Gross Exports": monthly_tbl}, "3_2_monthly_gross_exports.xlsx", key="dl_32_t2")
         render_table(
             monthly_tbl,
             {
@@ -2528,6 +2686,7 @@ def section_targets():
     view = st.radio("Choose target section", ["Overall", "Region-wise", "Country-wise", "Commodity-wise"], horizontal=True)
     if view == "Overall":
         d = DATA["overall_target"]
+        render_excel_download("Download this section as Excel", {"3.3-3.4 Overall Target": pd.DataFrame([d])}, "3_3_3_4_overall_target.xlsx", key="dl_targets_overall")
         r = st.columns(3)
         with r[0]:
             kpi("Annual Target FY2025-26", f"{fmt_num(d['target_bn'])} US$ bn", "")
@@ -2537,6 +2696,7 @@ def section_targets():
             kpi("% Target Achieved", f"{fmt_num(d['achieved_pct'])}%", "")
     elif view == "Region-wise":
         df = df_from("region_targets")
+        render_excel_download("Download this section as Excel", {"3.3 Region-wise Targets": df}, "3_3_region_targets.xlsx", key="dl_targets_region")
         top_n = st.slider("Top regions", 5, 10, 10, key="rtop")
         render_table(df.rename(columns={
             "region":"Region",
@@ -2558,6 +2718,7 @@ def section_targets():
         st.plotly_chart(fig, use_container_width=True)
     elif view == "Country-wise":
         df = df_from("country_targets")
+        render_excel_download("Download this section as Excel", {"3.4 Country-wise Targets": df}, "3_4_country_targets.xlsx", key="dl_targets_country")
         render_table(df.rename(columns={
             "country":"Country",
             "target_mn":"Target 2025-26 (US$ mn)",
@@ -2579,6 +2740,7 @@ def section_targets():
         st.plotly_chart(fig, use_container_width=True)
     else:
         df = df_from("commodity_targets")
+        render_excel_download("Download this section as Excel", {"3.4 Commodity-wise Targets": df}, "3_4_commodity_targets.xlsx", key="dl_targets_commodity")
         render_table(df.rename(columns={
             "commodity":"Commodity",
             "target_mn":"Export Target FY2025-26 (US$ mn)",
@@ -2605,36 +2767,39 @@ def section_targets():
 
 def section_exports():
     commodity_rows = [
-        {"commodity": 'Cut & Polished Diamonds', "fy2024_mn": 15967.0155910242, "fy2025_mn": 13292.4306358316, "fy2026_mn": 12159.826533725809},
-        {"commodity": 'Polished Lab Grown Diamonds', "fy2024_mn": 1402.43621641437, "fy2025_mn": 1267.27774263363, "fy2026_mn": 1133.0040368021612},
-        {"commodity": 'Coloured Gemstones', "fy2024_mn": 478.70955814074, "fy2025_mn": 440.443629575932, "fy2026_mn": 437.30725664670615},
-        {"commodity": 'Polished Synthetic Stones', "fy2024_mn": 13.8914534588718, "fy2025_mn": 11.5249714561311, "fy2026_mn": 16.90086028856919},
-        {"commodity": 'Pearls - Worked', "fy2024_mn": 8.28190903357442, "fy2025_mn": 4.86980026125159, "fy2026_mn": 5.571821335856648},
-        {"commodity": 'Plain Gold Jewellery', "fy2024_mn": 5873.20414936061, "fy2025_mn": 5231.76813682332, "fy2026_mn": 4843.63},
-        {"commodity": 'Studded Gold Jewellery', "fy2024_mn": 5356.96795570596, "fy2025_mn": 6136.00223949568, "fy2026_mn": 6520.69},
-        {"commodity": 'Total Gold Jewellery', "fy2024_mn": 11230.17210506657, "fy2025_mn": 11367.770376319, "fy2026_mn": 11364.321054649175},
-        {"commodity": 'Silver Jewellery', "fy2024_mn": 1618.97495959602, "fy2025_mn": 964.658801921387, "fy2026_mn": 1467.470438605242},
-        {"commodity": 'Platinum Jewellery', "fy2024_mn": 163.478501392917, "fy2025_mn": 182.752189075454, "fy2026_mn": 254.60217260948133},
-        {"commodity": 'Imitation Jewellery', "fy2024_mn": 66.4145726296881, "fy2025_mn": 65.6984476877835, "fy2026_mn": 71.8973946728683},
-        {"commodity": 'Articles of Gold, Silver & Others', "fy2024_mn": 54.2792947092569, "fy2025_mn": 56.3682473007683, "fy2026_mn": 21.698000189805267},
-        {"commodity": 'Gold Medallions & Coin', "fy2024_mn": 200.779907648462, "fy2025_mn": 120.404896159701, "fy2026_mn": 6.449841222636965},
-        {"commodity": 'Sales to Foreign Tourist', "fy2024_mn": 42.1, "fy2025_mn": 44.58, "fy2026_mn": np.nan},
-        {"commodity": 'Sub - Total', "fy2024_mn": 31246.534069114667, "fy2025_mn": 27818.779738222638, "fy2026_mn": 26939.048356099138},
-        {"commodity": 'Exports of Rough-Diamonds', "fy2024_mn": 917.315951412623, "fy2025_mn": 416.51, "fy2026_mn": 289.1487610105049},
-        {"commodity": 'Rgh Lab Grown Syn. Diamonds', "fy2024_mn": 83.4393338400182, "fy2025_mn": 56.06, "fy2026_mn": 50.63078687666443},
-        {"commodity": 'Others', "fy2024_mn": 80.65664135228872, "fy2025_mn": 424.2905960150638, "fy2026_mn": 438.5720952506924},
-        {"commodity": 'Gross Exports', "fy2024_mn": 32327.945995719598, "fy2025_mn": 28715.6403342377, "fy2026_mn": 27717.4},
-        {"commodity": 'Re-imports Others', "fy2024_mn": 5386.992857197, "fy2025_mn": 4446.76281811982, "fy2026_mn": np.nan},
-        {"commodity": 'Re-imports CPD', "fy2024_mn": 850.870950223379, "fy2025_mn": 750.657764237216, "fy2026_mn": np.nan},
-        {"commodity": 'Net Exports', "fy2024_mn": 26090.082188299217, "fy2025_mn": 23518.219751880664, "fy2026_mn": np.nan},
+        {"commodity": 'Cut & Polished Diamonds', "fy2024_mn": 15967.0155910242, "fy2025_mn": 13292.43, "fy2026_mn": 12159.83, "growth_pct": -8.520639190877818},
+        {"commodity": 'Polished Lab Grown Diamonds', "fy2024_mn": 1402.43621641437, "fy2025_mn": 1266.68, "fy2026_mn": 1133.0, "growth_pct": -10.553573120282948},
+        {"commodity": 'Coloured Gemstones', "fy2024_mn": 478.70955814074, "fy2025_mn": 440.44, "fy2026_mn": 437.31, "growth_pct": -0.7106529833802551},
+        {"commodity": 'Polished Synthetic Stones', "fy2024_mn": 13.8914534588718, "fy2025_mn": 11.5249714561311, "fy2026_mn": 16.9008602885691, "growth_pct": 46.64557177343908},
+        {"commodity": 'Pearls - Worked', "fy2024_mn": 8.28190903357442, "fy2025_mn": 4.86980026125159, "fy2026_mn": 5.57182133585664, "growth_pct": 14.41580838932855},
+        {"commodity": 'Plain Gold Jewellery', "fy2024_mn": 5873.20414936061, "fy2025_mn": 5231.76813682332, "fy2026_mn": 4744.1, "growth_pct": -9.321287260245956},
+        {"commodity": 'Studded with diamonds', "fy2024_mn": np.nan, "fy2025_mn": 3347.78748144793, "fy2026_mn": 3246.26, "growth_pct": -3.032674027564583},
+        {"commodity": 'Studded with LGD Diamonds', "fy2024_mn": np.nan, "fy2025_mn": 1085.64946191331, "fy2026_mn": 1426.13, "growth_pct": 31.36192205968944},
+        {"commodity": 'Studded Gold Jewellery (Other than Diamonds & LGD)', "fy2024_mn": np.nan, "fy2025_mn": 1702.56529613443, "fy2026_mn": 1847.73, "growth_pct": 8.526234159427405},
+        {"commodity": 'Total Gold Jewellery', "fy2024_mn": 11230.17210506657, "fy2025_mn": 11367.77037631899, "fy2026_mn": 11264.220000000001, "growth_pct": -0.910911928118299},
+        {"commodity": 'Silver Jewellery', "fy2024_mn": 1618.97495959602, "fy2025_mn": 964.658801921387, "fy2026_mn": 1467.47043860524, "growth_pct": 52.1232622023832},
+        {"commodity": 'Platinum Jewellery', "fy2024_mn": 163.478501392917, "fy2025_mn": 182.752189075454, "fy2026_mn": 254.602172609481, "growth_pct": 39.31552551984034},
+        {"commodity": 'Imitation Jewellery', "fy2024_mn": 66.4145726296881, "fy2025_mn": 65.6984476877835, "fy2026_mn": 71.8973946728683, "growth_pct": 9.435454266048794},
+        {"commodity": 'Articles of Gold, Silver & Others', "fy2024_mn": 54.2792947092569, "fy2025_mn": 56.3682473007683, "fy2026_mn": 61.08, "growth_pct": 8.35887742631209},
+        {"commodity": 'Gold Medallions & Coin', "fy2024_mn": 200.779907648462, "fy2025_mn": 120.404896159701, "fy2026_mn": 6.44984122263696, "growth_pct": -94.6432068559055},
+        {"commodity": 'Sales to Foreign Tourist', "fy2024_mn": 42.1, "fy2025_mn": 44.58, "fy2026_mn": np.nan, "growth_pct": -100.0},
+        {"commodity": 'Sub - Total', "fy2024_mn": 31246.534069114667, "fy2025_mn": 27818.177730181465, "fy2026_mn": 26878.332528734652, "growth_pct": -3.3785289984222198},
+        {"commodity": 'Exports of Rough-Diamonds', "fy2024_mn": 917.315951412623, "fy2025_mn": 416.51, "fy2026_mn": 289.148761010504, "growth_pct": -30.57819475870831},
+        {"commodity": 'Rgh Lab Grown Syn. Diamonds', "fy2024_mn": 83.4393338400182, "fy2025_mn": 56.06, "fy2026_mn": 50.6307868766644, "growth_pct": -9.68464702699893},
+        {"commodity": 'Others', "fy2024_mn": 80.65664135228872, "fy2025_mn": 424.290596015063, "fy2026_mn": 438.572095250692, "growth_pct": 3.3659711928005986},
+        {"commodity": 'Gross Exports', "fy2024_mn": 32327.945995719598, "fy2025_mn": 28715.6403342377, "fy2026_mn": 27656.68417187251, "growth_pct": -3.687733061284358},
+        {"commodity": 'Return Consignment Others', "fy2024_mn": np.nan, "fy2025_mn": 751.047216357029, "fy2026_mn": 883.493993417402, "growth_pct": 17.634946801721593},
+        {"commodity": 'Return Consignment CPD', "fy2024_mn": np.nan, "fy2025_mn": 4446.76281811981, "fy2026_mn": 4257.39797284568, "growth_pct": -4.258487646395262},
+        {"commodity": 'Net Exports', "fy2024_mn": 26090.082188299217, "fy2025_mn": 23517.830299760863, "fy2026_mn": 22515.79220560943, "growth_pct": -4.260759098009237}
     ]
     gross_2025 = 28715.6403342377
-    gross_2026 = 27717.40
+    gross_2026 = 27656.68417187251
     for row in commodity_rows:
-        row["growth_pct"] = ((row["fy2026_mn"] / row["fy2025_mn"]) - 1) * 100 if row["fy2025_mn"] else np.nan
+        if "growth_pct" not in row or pd.isna(row["growth_pct"]):
+            row["growth_pct"] = ((row["fy2026_mn"] / row["fy2025_mn"]) - 1) * 100 if row["fy2025_mn"] else np.nan
         row["share_2025_pct"] = (row["fy2025_mn"] / gross_2025) * 100 if gross_2025 else np.nan
-        row["share_2026_pct"] = (row["fy2026_mn"] / gross_2026) * 100 if gross_2026 else np.nan
-        row["share_change_pp"] = row["share_2026_pct"] - row["share_2025_pct"]
+        row["share_2026_pct"] = (row["fy2026_mn"] / gross_2026) * 100 if pd.notna(row["fy2026_mn"]) and gross_2026 else np.nan
+        row["share_change_pp"] = row["share_2026_pct"] - row["share_2025_pct"] if pd.notna(row["share_2026_pct"]) else np.nan
 
     band_summary_rows = [
         {"band": "0-30 Mn", "products_count": 11, "products_total_mn": 66.13075159462392, "markets_count": 123, "markets_total_mn": 341.7299541841581},
@@ -2664,7 +2829,7 @@ def section_exports():
         {"product": "Imitation Jewellery", "fy2026_mn": 71.8973946728683, "band": "70-100 Mn"},
         {"product": "Platinum Bar", "fy2026_mn": 79.5240050593979, "band": "70-100 Mn"},
         {"product": "Cut & Polished Diamonds", "fy2026_mn": 12159.826533725809, "band": ">200 Mn"},
-        {"product": "Gold Jewellery", "fy2026_mn": 11364.321054649175, "band": ">200 Mn"},
+        {"product": "Gold Jewellery", "fy2026_mn": 11264.22, "band": ">200 Mn"},
         {"product": "Silver Jewellery", "fy2026_mn": 1467.470438605242, "band": ">200 Mn"},
         {"product": "Lab Grown Diamonds, worked", "fy2026_mn": 1133.0040368021612, "band": ">200 Mn"},
         {"product": "Coloured Gemstones, worked", "fy2026_mn": 437.30725664670615, "band": ">200 Mn"},
@@ -2781,369 +2946,1047 @@ def section_exports():
         "Top-N filters now control the tables as well, and basket change can start from earlier benchmark years instead of only the latest two years.",
         ["Year comparison filters", "Standalone", "No runtime Excel needed", "Export structure"],
     )
-    tabs = st.tabs(["3.5 Key Commodities", "3.6 Basket Change", "3.7 Regions", "3.8 Top Destinations", "3.9 Port Performance"])
+    tabs = st.tabs(["3.2a Monthly Gross Exports", "3.5 Key Commodities", "3.6 Basket Change", "3.7 Top Destinations", "3.8 Regions", "3.9 Port Performance", "4.1 CPD Exports", "4.2 Rough Diamond Imports", "4.3 CPD Markets", "4.4 Rough Diamond Markets", "5.1 Polished LGD Exports", "5.2 Rough LGD Imports", "5.3 Polished LGD Markets"])
+
 
     with tabs[0]:
-        chart_source = basket_df[~basket_df["commodity"].isin([
-            "Total Gold Jewellery", "Sub - Total", "Gross Exports", "Re-imports Others", "Re-imports CPD", "Net Exports"
-        ])].copy()
-        top_n = st.slider("Top commodities for charts", 5, len(chart_source), min(10, len(chart_source)), key="exp25_topn")
-        full_table = basket_df.rename(columns={
-            "commodity": "Commodity",
-            "fy2024_mn": "FY2023-24 (US$ mn)",
-            "fy2025_mn": "FY2024-25 (US$ mn)",
-            "fy2026_mn": "FY2025-26 (US$ mn)",
-            "growth_pct": "% Growth / Decline (Y-o-Y)",
-            "share_2025_pct": "FY2024-25 Share (%)",
-            "share_2026_pct": "FY2025-26 Share (%)",
+        st.caption("Matched to annual report sheet 3.2a: Gem and Jewellery Gross Exports with YoY export-growth line chart.")
+        monthly_32a = pd.DataFrame([
+            {"month": "April", "fy2025_mn": 2268.09006184044, "fy2026_mn": 2571.71107755110, "growth_pct": 13.39},
+            {"month": "May", "fy2025_mn": 2688.51190640103, "fy2026_mn": 2289.79306107891, "growth_pct": -14.83},
+            {"month": "June", "fy2025_mn": 1965.34938668895, "fy2026_mn": 1749.18611525491, "growth_pct": -11.00},
+            {"month": "July", "fy2025_mn": 1878.11189593960, "fy2026_mn": 2341.38586795489, "growth_pct": 24.67},
+            {"month": "August", "fy2025_mn": 2062.50616898579, "fy2026_mn": 2228.93062371415, "growth_pct": 8.07},
+            {"month": "September", "fy2025_mn": 2735.38232025248, "fy2026_mn": 2915.66064320616, "growth_pct": 6.59},
+            {"month": "October", "fy2025_mn": 3159.20988821298, "fy2026_mn": 2259.89837174732, "growth_pct": -28.47},
+            {"month": "November", "fy2025_mn": 2098.59476126767, "fy2026_mn": 2528.61290357865, "growth_pct": 20.49},
+            {"month": "December", "fy2025_mn": 2103.88746243401, "fy2026_mn": 2080.57079900905, "growth_pct": -1.11},
+            {"month": "January", "fy2025_mn": 2376.01894749594, "fy2026_mn": 2287.18520303523, "growth_pct": -3.74},
+            {"month": "February", "fy2025_mn": 2581.44856980109, "fy2026_mn": 2580.68786917745, "growth_pct": -0.03},
+            {"month": "March", "fy2025_mn": 2753.94896491767, "fy2026_mn": 1783.67380615236, "growth_pct": -35.23},
+            {"month": "Sales to Foreign Tourist", "fy2025_mn": 44.58, "fy2026_mn": np.nan, "growth_pct": np.nan},
+            {"month": "Total (US$million)", "fy2025_mn": 28715.64033423765, "fy2026_mn": 27617.29634146018, "growth_pct": -3.82},
+            {"month": "Total (Rs. Crores)", "fy2025_mn": 242572.32931148900, "fy2026_mn": 243919.42161643600, "growth_pct": 0.56, "value_unit": "Rs. crores"},
+        ])
+        monthly_32a["value_unit"] = monthly_32a.get("value_unit", pd.Series([None] * len(monthly_32a)))
+        usd_rows = monthly_32a[monthly_32a["value_unit"].isna()].copy()
+        rs_rows = monthly_32a[monthly_32a["value_unit"].eq("Rs. crores")].copy()
+    
+        usd_table = usd_rows.rename(columns={
+            "month": "Months",
+            "fy2025_mn": "FY2024-25 (US$ million)",
+            "fy2026_mn": "FY2025-26 (US$ million)",
+            "growth_pct": "% Export Growth (Y-o-Y)",
         })
-        render_table(
-            full_table[["Commodity", "FY2023-24 (US$ mn)", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Growth / Decline (Y-o-Y)", "FY2024-25 Share (%)", "FY2025-26 Share (%)"]],
-            {
-                "FY2023-24 (US$ mn)": "{:,.2f}",
-                "FY2024-25 (US$ mn)": "{:,.2f}",
-                "FY2025-26 (US$ mn)": "{:,.2f}",
-                "% Growth / Decline (Y-o-Y)": "{:+,.2f}",
-                "FY2024-25 Share (%)": "{:,.2f}",
-                "FY2025-26 Share (%)": "{:,.2f}",
-            },
-            height=720,
-        )
-
-        latest_top = chart_source.nlargest(top_n, "fy2026_mn").copy()
-        left, right = st.columns(2)
-        with left:
-            pie_25 = px.pie(latest_top, values="fy2025_mn", names="commodity", hole=0.35)
-            pie_25.update_traces(textinfo="percent+label")
-            pie_25.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=50, b=10), title="FY2024-25 Share of Selected Commodities")
-            st.plotly_chart(pie_25, use_container_width=True)
-        with right:
-            pie_26 = latest_top.dropna(subset=["fy2026_mn"]).copy()
-            pie_26 = px.pie(pie_26, values="fy2026_mn", names="commodity", hole=0.35)
-            pie_26.update_traces(textinfo="percent+label")
-            pie_26.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=50, b=10), title="FY2025-26 Share of Selected Commodities")
-            st.plotly_chart(pie_26, use_container_width=True)
-
-        compare_plot = latest_top.sort_values("fy2026_mn")
-        fig = go.Figure()
-        fig.add_trace(go.Bar(y=compare_plot["commodity"], x=compare_plot["fy2025_mn"], orientation="h", name="FY2024-25", marker_color="#d9ead3"))
-        fig.add_trace(go.Bar(y=compare_plot["commodity"], x=compare_plot["fy2026_mn"], orientation="h", name="FY2025-26", marker_color="#274e3d"))
-        fig.update_layout(
-            barmode="group",
-            template="plotly_white",
-            height=480,
-            margin=dict(l=10, r=10, t=10, b=10),
-            xaxis_title="Exports (US$ mn)",
-            yaxis_title="",
-        )
-        if show_labels:
-            fig.for_each_trace(lambda tr: tr.update(text=[f"{v:,.0f}" if pd.notna(v) else "" for v in tr.x], textposition="outside"))
-        st.plotly_chart(fig, use_container_width=True)
-
-    with tabs[1]:
-        basket_hist = load_export_basket_history()
-        if basket_hist.empty:
-            st.warning("The multi-year basket history could not be reconstructed because the EXPORT PRODUCTS workbook is not available next to the app.")
+        if not rs_rows.empty:
+            rs_table = rs_rows.rename(columns={
+                "month": "Months",
+                "fy2025_mn": "FY2024-25 (Rs. crores)",
+                "fy2026_mn": "FY2025-26 (Rs. crores)",
+                "growth_pct": "% Export Growth (Y-o-Y)",
+            }).copy()
+            rs_table["FY2024-25 (US$ million)"] = np.nan
+            rs_table["FY2025-26 (US$ million)"] = np.nan
+            rs_table = rs_table[["Months", "FY2024-25 (US$ million)", "FY2025-26 (US$ million)", "% Export Growth (Y-o-Y)", "FY2024-25 (Rs. crores)", "FY2025-26 (Rs. crores)"]]
         else:
-            years = sorted(basket_hist["fy_start"].dropna().astype(int).unique().tolist())
-            default_start = years[0] if years else None
-            default_end = years[-1] if years else None
-            start_year, end_year, start_label, end_label = choose_year_block("exp_basket", years, default_start, default_end)
-
-            value_pivot = basket_hist.pivot_table(index="commodity", columns="fy_start", values="value_mn", aggfunc="sum")
-            share_pivot = basket_hist.pivot_table(index="commodity", columns="fy_start", values="share_pct", aggfunc="sum")
-
-            for y in [start_year, end_year]:
-                if y not in value_pivot.columns:
-                    value_pivot[y] = np.nan
-                if y not in share_pivot.columns:
-                    share_pivot[y] = np.nan
-
-            ordered_rows = [
-                "Cut & Pol Diamonds",
-                "Gold Jewellery",
-                "Silver Jewellery",
+            rs_table = pd.DataFrame()
+    
+        usd_table["FY2024-25 (Rs. crores)"] = np.nan
+        usd_table["FY2025-26 (Rs. crores)"] = np.nan
+        full_32a_table = pd.concat([
+            usd_table[["Months", "FY2024-25 (US$ million)", "FY2025-26 (US$ million)", "% Export Growth (Y-o-Y)", "FY2024-25 (Rs. crores)", "FY2025-26 (Rs. crores)"]],
+            rs_table,
+        ], ignore_index=True)
+        render_excel_download("Download this tab as Excel", {"3.2a Monthly Gross Exports": full_32a_table}, "3_2a_monthly_gross_exports.xlsx", key="dl_exp_tab_32a")
+    
+        render_table(
+            full_32a_table,
+            {
+                "FY2024-25 (US$ million)": "{:,.2f}",
+                "FY2025-26 (US$ million)": "{:,.2f}",
+                "% Export Growth (Y-o-Y)": "{:+,.2f}",
+                "FY2024-25 (Rs. crores)": "{:,.2f}",
+                "FY2025-26 (Rs. crores)": "{:,.2f}",
+            },
+            height=560,
+        )
+    
+        plot_months = usd_rows[~usd_rows["month"].astype(str).str.contains("Sales to Foreign Tourist|Total", case=False, na=False)].copy()
+        c1, c2 = st.columns(2)
+        with c1:
+            fig = go.Figure()
+            fig.add_trace(go.Bar(x=plot_months["month"], y=plot_months["fy2025_mn"], name="FY2024-25", marker_color="#8fb996"))
+            fig.add_trace(go.Bar(x=plot_months["month"], y=plot_months["fy2026_mn"], name="FY2025-26", marker_color="#274e3d"))
+            fig.update_layout(
+                barmode="group",
+                template="plotly_white",
+                height=380,
+                margin=dict(l=10, r=10, t=45, b=10),
+                title="Figure 4 – Gem & Jewellery Gross Exports (US$ mn)",
+                yaxis_title="US$ mn",
+                xaxis_title="",
+                legend_title_text="",
+            )
+            if show_labels:
+                add_bar_labels(fig, "v", "{:,.0f}")
+            st.plotly_chart(fig, use_container_width=True)
+    
+        with c2:
+            yoy_fig = go.Figure()
+            yoy_fig.add_trace(
+                go.Scatter(
+                    x=plot_months["month"],
+                    y=plot_months["growth_pct"],
+                    mode="lines+markers",
+                    name="YoY export growth",
+                    line=dict(color="#7a1f5c", width=3),
+                    marker=dict(size=8),
+                )
+            )
+            yoy_fig.add_hline(y=0, line_dash="dot", line_color="gray")
+            yoy_fig.update_layout(
+                template="plotly_white",
+                height=380,
+                margin=dict(l=10, r=10, t=45, b=10),
+                title="Figure 4 – Gem & Jewellery Export Growth in % (y-o-y)",
+                yaxis_title="YoY growth (%)",
+                xaxis_title="",
+                legend_title_text="",
+            )
+            if show_labels:
+                add_line_labels(yoy_fig, "{:,.2f}")
+            st.plotly_chart(yoy_fig, use_container_width=True)
+    
+    
+        with tabs[1]:
+            report_df = key_df.copy()
+            report_table = report_df.rename(columns={
+                "commodity": "Commodity",
+                "fy2025_mn": "FY2024-25 (US$ mn)",
+                "fy2026_mn": "FY2025-26 (US$ mn)",
+                "growth_pct": "% Growth / Decline (Y-o-Y)",
+            })
+            render_excel_download("Download this tab as Excel", {"3.5 Key Commodities": report_table}, "3_5_key_commodities.xlsx", key="dl_exp_tab_35")
+            render_table(
+                report_table[["Commodity", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Growth / Decline (Y-o-Y)"]],
+                {
+                    "FY2024-25 (US$ mn)": "{:,.2f}",
+                    "FY2025-26 (US$ mn)": "{:,.2f}",
+                    "% Growth / Decline (Y-o-Y)": "{:+,.2f}",
+                },
+                height=920,
+            )
+    
+            share_source = report_df[~report_df["commodity"].isin([
+                "Sub - Total", "Gross Exports", "Return Consignment Others", "Return Consignment CPD", "Net Exports", "Sales to Foreign Tourist"
+            ])].copy()
+            top_n = st.slider("Top commodities for share charts", 5, len(share_source), min(10, len(share_source)), key="exp25_topn")
+            latest_top = share_source.nlargest(top_n, "fy2026_mn").copy()
+    
+            left, right = st.columns(2)
+            with left:
+                pie_25 = px.pie(latest_top, values="fy2025_mn", names="commodity", hole=0.35)
+                pie_25.update_traces(textinfo="percent+label")
+                pie_25.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=50, b=10), title="FY2024-25 Share of Selected Commodities")
+                st.plotly_chart(pie_25, use_container_width=True)
+            with right:
+                pie_26_df = latest_top.dropna(subset=["fy2026_mn"]).copy()
+                pie_26 = px.pie(pie_26_df, values="fy2026_mn", names="commodity", hole=0.35)
+                pie_26.update_traces(textinfo="percent+label")
+                pie_26.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=50, b=10), title="FY2025-26 Share of Selected Commodities")
+                st.plotly_chart(pie_26, use_container_width=True)
+    
+            yoy_items = [
+                "Cut & Polished Diamonds",
+                "Polished Lab Grown Diamonds",
                 "Coloured Gemstones",
                 "Polished Synthetic Stones",
                 "Pearls - Worked",
+                "Plain Gold Jewellery",
+                "Studded with diamonds",
+                "Studded with LGD Diamonds",
+                "Studded Gold Jewellery (Other than Diamonds & LGD)",
+                "Total Gold Jewellery",
+                "Silver Jewellery",
                 "Platinum Jewellery",
                 "Imitation Jewellery",
-                "Gross Exports",
             ]
-            basket_table = pd.DataFrame({
-                "Commodity": ordered_rows,
-                f"{start_label} (US$ mn)": [float(value_pivot.loc[row, start_year]) if row in value_pivot.index else np.nan for row in ordered_rows],
-                f"{end_label} (US$ mn)": [float(value_pivot.loc[row, end_year]) if row in value_pivot.index else np.nan for row in ordered_rows],
-                f"{start_label} Share (%)": [float(share_pivot.loc[row, start_year]) if row in share_pivot.index else np.nan for row in ordered_rows],
-                f"{end_label} Share (%)": [float(share_pivot.loc[row, end_year]) if row in share_pivot.index else np.nan for row in ordered_rows],
-            })
-            basket_table["Change in Share (pp)"] = basket_table[f"{end_label} Share (%)"] - basket_table[f"{start_label} Share (%)"]
-            basket_table["Growth / Decline (%)"] = np.where(
-                basket_table[f"{start_label} (US$ mn)"] != 0,
-                ((basket_table[f"{end_label} (US$ mn)"] / basket_table[f"{start_label} (US$ mn)"]) - 1) * 100,
-                np.nan,
-            )
-
-            st.caption("3.6 is reconstructed across multiple years from the annual-report export-products workbook. Shares are recalculated against the reconstructed basket total for each selected year so the year-comparison logic stays consistent.")
-
-            left, right = st.columns(2)
-            with left:
-                render_table(
-                    basket_table[["Commodity", f"{start_label} (US$ mn)", f"{end_label} (US$ mn)", f"{start_label} Share (%)", f"{end_label} Share (%)", "Change in Share (pp)", "Growth / Decline (%)"]],
-                    {
-                        f"{start_label} (US$ mn)": "{:,.2f}",
-                        f"{end_label} (US$ mn)": "{:,.2f}",
-                        f"{start_label} Share (%)": "{:,.2f}",
-                        f"{end_label} Share (%)": "{:,.2f}",
-                        "Change in Share (pp)": "{:+,.2f}",
-                        "Growth / Decline (%)": "{:+,.2f}",
-                    },
-                    height=420,
-                )
-
-                compare_plot = basket_table[basket_table["Commodity"] != "Gross Exports"].copy()
-                fig = go.Figure()
-                fig.add_trace(go.Bar(x=compare_plot["Commodity"], y=compare_plot[f"{start_label} Share (%)"], name=f"{start_label} share", marker_color="#d9ead3"))
-                fig.add_trace(go.Bar(x=compare_plot["Commodity"], y=compare_plot[f"{end_label} Share (%)"], name=f"{end_label} share", marker_color="#7a1f5c"))
-                fig.update_layout(
-                    barmode="group",
-                    template="plotly_white",
-                    height=360,
-                    margin=dict(l=10, r=10, t=10, b=10),
-                    yaxis_title="Share of reconstructed basket (%)",
-                    xaxis_title="",
-                )
-                st.plotly_chart(fig, use_container_width=True)
-
-            with right:
-                if end_year == 2025:
-                    render_table(
-                        band_df.rename(columns={
-                            "band": "Value Band",
-                            "products_count": "Products Count",
-                            "products_total_mn": "Products FY2025-26 Total (US$ mn)",
-                            "markets_count": "Markets Count",
-                            "markets_total_mn": "Markets FY2025-26 Total (US$ mn)",
-                        }),
-                        {
-                            "Products FY2025-26 Total (US$ mn)": "{:,.2f}",
-                            "Markets FY2025-26 Total (US$ mn)": "{:,.2f}",
-                        },
-                        height=400,
-                    )
-                    fig2 = go.Figure()
-                    fig2.add_trace(go.Bar(x=band_df["band"], y=band_df["products_count"], name="Products Count", marker_color="#5a7d4d"))
-                    fig2.add_trace(go.Bar(x=band_df["band"], y=band_df["markets_count"], name="Markets Count", marker_color="#b88746"))
-                    fig2.update_layout(barmode="group", template="plotly_white", height=360, margin=dict(l=10, r=10, t=10, b=10), yaxis_title="Count", xaxis_title="FY2025-26 export band")
-                    if show_labels:
-                        add_bar_labels(fig2, "v", "{:,.0f}")
-                    st.plotly_chart(fig2, use_container_width=True)
-                else:
-                    st.info("The basket-significance ladder is currently available only for FY2025-26 in the embedded SAP extract, so it is shown when FY2025-26 is selected as the end year.")
-
-            if end_year == 2025:
-                st.markdown("<div class='report-band'>FY2025-26 product significance ladder</div>", unsafe_allow_html=True)
-                render_table(
-                    significance_df.rename(columns={
-                        "product": "Product",
-                        "fy2026_mn": "FY2025-26 Export Value (US$ mn)",
-                        "band": "Value Band",
-                    }),
-                    {"FY2025-26 Export Value (US$ mn)": "{:,.2f}"},
-                    height=420,
-                )
-
-    with tabs[2]:
-        country_hist = load_entity_year_wide_workbook(
-            "Country-wise (exports, imports, re-imports).xlsx",
-            "Country-Imports",
-            "country",
-        )
-        if not country_hist.empty:
-            years = sorted([c for c in country_hist.columns if isinstance(c, int)])
-            default_start = 2020 if 2020 in years else years[0]
-            default_end = 2025 if 2025 in years else years[-1]
-            c1, c2, c3 = st.columns([1, 1, 1])
-            with c1:
-                start_year = st.selectbox(
-                    "Start year",
-                    years,
-                    index=years.index(default_start),
-                    format_func=fy_label_generic,
-                    key="imp_country_hist_start",
-                )
-            with c2:
-                end_options = [y for y in years if y >= start_year]
-                end_year = st.selectbox(
-                    "End year",
-                    end_options,
-                    index=end_options.index(default_end) if default_end in end_options else len(end_options) - 1,
-                    format_func=fy_label_generic,
-                    key="imp_country_hist_end",
-                )
-            with c3:
-                max_n = max(5, min(25, len(country_hist)))
-                top_n = st.slider("Top N countries", 5, max_n, min(10, max_n), key="imp_country_hist_topn")
-
-            comp = compare_country_product(country_hist, start_year, end_year)
-            start_label = fy_label_generic(start_year)
-            end_label = fy_label_generic(end_year)
-
-            top_df = comp.head(top_n).copy().rename(columns={
-                "Start Value": f"{start_label} (US$ mn)",
-                "End Value": f"{end_label} (US$ mn)",
-                "Start Share (%)": f"{start_label} % Share",
-                "End Share (%)": f"{end_label} % Share",
-            })
-            render_table(
-                top_df[["Country", f"{start_label} (US$ mn)", f"{start_label} % Share", f"{end_label} (US$ mn)", f"{end_label} % Share", "Change (US$ mn)", "Growth (%)"]],
-                {
-                    f"{start_label} (US$ mn)": "{:,.2f}",
-                    f"{start_label} % Share": "{:,.2f}",
-                    f"{end_label} (US$ mn)": "{:,.2f}",
-                    f"{end_label} % Share": "{:,.2f}",
-                    "Change (US$ mn)": "{:+,.2f}",
-                    "Growth (%)": "{:+,.2f}",
-                },
-                height=460,
-            )
-
-            left, right = st.columns(2)
-            with left:
-                plot_df = top_df.sort_values(f"{end_label} (US$ mn)")
-                fig = go.Figure()
-                fig.add_trace(go.Bar(y=plot_df["Country"], x=plot_df[f"{start_label} (US$ mn)"], orientation="h", name=start_label, marker_color="#d9ead3"))
-                fig.add_trace(go.Bar(y=plot_df["Country"], x=plot_df[f"{end_label} (US$ mn)"], orientation="h", name=end_label, marker_color="#b88746"))
-                fig.update_layout(barmode="group", template="plotly_white", height=430, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="US$ mn", yaxis_title="")
-                st.plotly_chart(fig, use_container_width=True)
-            with right:
-                pie_end = pie_with_others(comp, "End Value", top_n=top_n)
-                if not pie_end.empty:
-                    fig = px.pie(pie_end, names="Country", values="End Value", hole=0.35, title=f"{end_label} country share")
-                    fig.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=40, b=10))
-                    st.plotly_chart(fig, use_container_width=True)
-        else:
-            year_map = {
-                "FY2020-21": "fy2020",
-                "FY2025-26": "fy2025",
+            yoy_labels = {
+                "Cut & Polished Diamonds": "Cut & Polished<br>Diamonds",
+                "Polished Lab Grown Diamonds": "Polished Lab Grown<br>Diamonds",
+                "Coloured Gemstones": "Coloured<br>Gemstones",
+                "Polished Synthetic Stones": "Polished Synthetic<br>Stones",
+                "Pearls - Worked": "Pearls -<br>Worked",
+                "Plain Gold Jewellery": "Plain Gold<br>Jewellery",
+                "Studded with diamonds": "Studded with<br>diamonds",
+                "Studded with LGD Diamonds": "Studded with LGD<br>Diamonds",
+                "Studded Gold Jewellery (Other than Diamonds & LGD)": "Studded Gold Jewellery<br>(Other than Diamonds & LGD)",
+                "Total Gold Jewellery": "Total Gold<br>Jewellery",
+                "Silver Jewellery": "Silver<br>Jewellery",
+                "Platinum Jewellery": "Platinum<br>Jewellery",
+                "Imitation Jewellery": "Imitation<br>Jewellery",
             }
-            available_years = list(year_map.keys())
+            yoy_df = report_df[report_df["commodity"].isin(yoy_items)].copy()
+            yoy_df["order"] = yoy_df["commodity"].map({name: i for i, name in enumerate(yoy_items)})
+            yoy_df = yoy_df.sort_values("order")
+            yoy_df["label"] = yoy_df["commodity"].map(yoy_labels).fillna(yoy_df["commodity"])
+    
+            yoy_fig = go.Figure()
+            yoy_fig.add_trace(
+                go.Scatter(
+                    x=yoy_df["label"],
+                    y=yoy_df["growth_pct"],
+                    mode="lines+markers",
+                    name="FY2025-26 YoY",
+                    line=dict(width=3),
+                    marker=dict(size=8),
+                )
+            )
+            yoy_fig.update_layout(
+                template="plotly_white",
+                height=430,
+                margin=dict(l=10, r=10, t=60, b=20),
+                title="Export Performance (Y-o-Y % Growth/Decline) – Key Commodities FY2025-26",
+                yaxis_title="% Growth / Decline",
+                xaxis_title="",
+            )
+            yoy_fig.update_xaxes(tickangle=0)
+            if show_labels:
+                add_line_labels(yoy_fig, "{:,.2f}")
+            st.plotly_chart(yoy_fig, use_container_width=True)
+    
+            compare_plot = latest_top.sort_values("fy2026_mn")
+            fig = go.Figure()
+            fig.add_trace(go.Bar(y=compare_plot["commodity"], x=compare_plot["fy2025_mn"], orientation="h", name="FY2024-25", marker_color="#d9ead3"))
+            fig.add_trace(go.Bar(y=compare_plot["commodity"], x=compare_plot["fy2026_mn"], orientation="h", name="FY2025-26", marker_color="#274e3d"))
+            fig.update_layout(
+                barmode="group",
+                template="plotly_white",
+                height=480,
+                margin=dict(l=10, r=10, t=10, b=10),
+                xaxis_title="Exports (US$ mn)",
+                yaxis_title="",
+            )
+            if show_labels:
+                fig.for_each_trace(lambda tr: tr.update(text=[f"{v:,.0f}" if pd.notna(v) else "" for v in tr.x], textposition="outside"))
+            st.plotly_chart(fig, use_container_width=True)
+    
+        with tabs[2]:
+            basket_hist = load_export_basket_history()
+            if basket_hist.empty:
+                st.warning("The multi-year basket history could not be reconstructed because the EXPORT PRODUCTS workbook is not available next to the app.")
+            else:
+                years = sorted(basket_hist["fy_start"].dropna().astype(int).unique().tolist())
+                default_start = years[0] if years else None
+                default_end = years[-1] if years else None
+                start_year, end_year, start_label, end_label = choose_year_block("exp_basket", years, default_start, default_end)
+    
+                value_pivot = basket_hist.pivot_table(index="commodity", columns="fy_start", values="value_mn", aggfunc="sum")
+                share_pivot = basket_hist.pivot_table(index="commodity", columns="fy_start", values="share_pct", aggfunc="sum")
+    
+                for y in [start_year, end_year]:
+                    if y not in value_pivot.columns:
+                        value_pivot[y] = np.nan
+                    if y not in share_pivot.columns:
+                        share_pivot[y] = np.nan
+    
+                ordered_rows = [
+                    "Cut & Pol Diamonds",
+                    "Gold Jewellery",
+                    "Silver Jewellery",
+                    "Coloured Gemstones",
+                    "Polished Synthetic Stones",
+                    "Pearls - Worked",
+                    "Platinum Jewellery",
+                    "Imitation Jewellery",
+                    "Gross Exports",
+                ]
+                basket_table = pd.DataFrame({
+                    "Commodity": ordered_rows,
+                    f"{start_label} (US$ mn)": [float(value_pivot.loc[row, start_year]) if row in value_pivot.index else np.nan for row in ordered_rows],
+                    f"{end_label} (US$ mn)": [float(value_pivot.loc[row, end_year]) if row in value_pivot.index else np.nan for row in ordered_rows],
+                    f"{start_label} Share (%)": [float(share_pivot.loc[row, start_year]) if row in share_pivot.index else np.nan for row in ordered_rows],
+                    f"{end_label} Share (%)": [float(share_pivot.loc[row, end_year]) if row in share_pivot.index else np.nan for row in ordered_rows],
+                })
+                basket_table["Change in Share (pp)"] = basket_table[f"{end_label} Share (%)"] - basket_table[f"{start_label} Share (%)"]
+                basket_table["Growth / Decline (%)"] = np.where(
+                    basket_table[f"{start_label} (US$ mn)"] != 0,
+                    ((basket_table[f"{end_label} (US$ mn)"] / basket_table[f"{start_label} (US$ mn)"]) - 1) * 100,
+                    np.nan,
+                )
+    
+                st.caption("3.6 is reconstructed across multiple years from the annual-report export-products workbook. Shares are recalculated against the reconstructed basket total for each selected year so the year-comparison logic stays consistent.")
+                basket_sheets = {"3.6 Basket Change": basket_table}
+                if end_year == 2025:
+                    basket_sheets["3.6 Band Summary FY2025-26"] = band_df.rename(columns={"band": "Value Band", "products_count": "Products Count", "products_total_mn": "Products FY2025-26 Total (US$ mn)", "markets_count": "Markets Count", "markets_total_mn": "Markets FY2025-26 Total (US$ mn)"})
+                    basket_sheets["3.6 Significance Ladder FY2025-26"] = significance_df.rename(columns={"product": "Product", "fy2026_mn": "FY2025-26 Export Value (US$ mn)", "band": "Value Band"})
+                render_excel_download("Download this tab as Excel", basket_sheets, "3_6_basket_change.xlsx", key=f"dl_exp_tab_36_{start_year}_{end_year}")
+    
+                left, right = st.columns(2)
+                with left:
+                    render_table(
+                        basket_table[["Commodity", f"{start_label} (US$ mn)", f"{end_label} (US$ mn)", f"{start_label} Share (%)", f"{end_label} Share (%)", "Change in Share (pp)", "Growth / Decline (%)"]],
+                        {
+                            f"{start_label} (US$ mn)": "{:,.2f}",
+                            f"{end_label} (US$ mn)": "{:,.2f}",
+                            f"{start_label} Share (%)": "{:,.2f}",
+                            f"{end_label} Share (%)": "{:,.2f}",
+                            "Change in Share (pp)": "{:+,.2f}",
+                            "Growth / Decline (%)": "{:+,.2f}",
+                        },
+                        height=420,
+                    )
+    
+                    compare_plot = basket_table[basket_table["Commodity"] != "Gross Exports"].copy()
+                    fig = go.Figure()
+                    fig.add_trace(go.Bar(x=compare_plot["Commodity"], y=compare_plot[f"{start_label} Share (%)"], name=f"{start_label} share", marker_color="#d9ead3"))
+                    fig.add_trace(go.Bar(x=compare_plot["Commodity"], y=compare_plot[f"{end_label} Share (%)"], name=f"{end_label} share", marker_color="#7a1f5c"))
+                    fig.update_layout(
+                        barmode="group",
+                        template="plotly_white",
+                        height=360,
+                        margin=dict(l=10, r=10, t=10, b=10),
+                        yaxis_title="Share of reconstructed basket (%)",
+                        xaxis_title="",
+                    )
+                    st.plotly_chart(fig, use_container_width=True)
+    
+                with right:
+                    if end_year == 2025:
+                        render_table(
+                            band_df.rename(columns={
+                                "band": "Value Band",
+                                "products_count": "Products Count",
+                                "products_total_mn": "Products FY2025-26 Total (US$ mn)",
+                                "markets_count": "Markets Count",
+                                "markets_total_mn": "Markets FY2025-26 Total (US$ mn)",
+                            }),
+                            {
+                                "Products FY2025-26 Total (US$ mn)": "{:,.2f}",
+                                "Markets FY2025-26 Total (US$ mn)": "{:,.2f}",
+                            },
+                            height=400,
+                        )
+                        fig2 = go.Figure()
+                        fig2.add_trace(go.Bar(x=band_df["band"], y=band_df["products_count"], name="Products Count", marker_color="#5a7d4d"))
+                        fig2.add_trace(go.Bar(x=band_df["band"], y=band_df["markets_count"], name="Markets Count", marker_color="#b88746"))
+                        fig2.update_layout(barmode="group", template="plotly_white", height=360, margin=dict(l=10, r=10, t=10, b=10), yaxis_title="Count", xaxis_title="FY2025-26 export band")
+                        if show_labels:
+                            add_bar_labels(fig2, "v", "{:,.0f}")
+                        st.plotly_chart(fig2, use_container_width=True)
+                    else:
+                        st.info("The basket-significance ladder is currently available only for FY2025-26 in the embedded SAP extract, so it is shown when FY2025-26 is selected as the end year.")
+    
+                if end_year == 2025:
+                    st.markdown("<div class='report-band'>FY2025-26 product significance ladder</div>", unsafe_allow_html=True)
+                    render_table(
+                        significance_df.rename(columns={
+                            "product": "Product",
+                            "fy2026_mn": "FY2025-26 Export Value (US$ mn)",
+                            "band": "Value Band",
+                        }),
+                        {"FY2025-26 Export Value (US$ mn)": "{:,.2f}"},
+                        height=420,
+                    )
+    
+    
+        export_region_sheet_rows = [{'fy2021_mn': 7766.40906007119,
+      'fy2021_share_pct': 19.616493404525524,
+      'fy2025_mn': 10040.348245779,
+      'fy2025_share_pct': 36.35528006355837,
+      'region': 'Middle East'},
+     {'fy2021_mn': 12214.0048952631,
+      'fy2021_share_pct': 30.85028674353329,
+      'fy2025_mn': 7785.67844226642,
+      'fy2025_share_pct': 28.191305054822184,
+      'region': 'Asia'},
+     {'fy2021_mn': 14756.4205655228,
+      'fy2021_share_pct': 37.27195212858507,
+      'fy2025_mn': 5553.56367099229,
+      'fy2025_share_pct': 20.108999973642163,
+      'region': 'North America'},
+     {'fy2021_mn': 3782.68034147979,
+      'fy2021_share_pct': 9.554341446107975,
+      'fy2025_mn': 3311.02665071124,
+      'fy2025_share_pct': 11.98895678096805,
+      'region': 'Europe Union 27'},
+     {'fy2021_mn': 271.520216673222,
+      'fy2021_share_pct': 0.6858091684803399,
+      'fy2025_mn': 389.700398929254,
+      'fy2025_share_pct': 1.4110732812389841,
+      'region': 'East Asia (Oceania)'},
+     {'fy2021_mn': 288.973663508016,
+      'fy2021_share_pct': 0.7298933033839725,
+      'fy2025_mn': 323.278046342422,
+      'fy2025_share_pct': 1.170563373448695,
+      'region': 'Europe-Others'},
+     {'fy2021_mn': 445.08503997024,
+      'fy2021_share_pct': 1.1242013758864717,
+      'fy2025_mn': 135.351307864256,
+      'fy2025_share_pct': 0.49009601897450444,
+      'region': 'Africa'},
+     {'fy2021_mn': 33.2599308420397,
+      'fy2021_share_pct': 0.08400835044244583,
+      'fy2025_mn': 33.0578155365687,
+      'fy2025_share_pct': 0.11969964713391872,
+      'region': 'CIS Countries'},
+     {'fy2021_mn': 6.64487060301986,
+      'fy2021_share_pct': 0.016783697504193756,
+      'fy2025_mn': 30.6095056782807,
+      'fy2025_share_pct': 0.11083451731953697,
+      'region': 'Latin America'},
+     {'fy2021_mn': 26.221416066582606,
+      'fy2021_share_pct': 0.06623038155071403,
+      'fy2025_mn': 14.69,
+      'fy2025_share_pct': 0.053191288893609134,
+      'region': 'Others'},
+     {'fy2021_mn': 39591.22, 'fy2021_share_pct': 100, 'fy2025_mn': 27617.304084099727, 'fy2025_share_pct': 100, 'region': 'TOTAL'}]
+    
+        export_destination_sheet_rows = [{'fy2021_country': 'United States Of America',
+      'fy2021_mn': 14610.1492910481,
+      'fy2021_share_pct': 36.90249830908999,
+      'fy2025_country': 'United Arab Emirates',
+      'fy2025_mn': 8614.93752514415,
+      'fy2025_share_pct': 31.193984390764918,
+      'rank': 1},
+     {'fy2021_country': 'Hongkong',
+      'fy2021_mn': 9371.03024474751,
+      'fy2021_share_pct': 23.669465716761216,
+      'fy2025_country': 'Hongkong',
+      'fy2025_mn': 5972.23885276315,
+      'fy2025_share_pct': 21.62498857446981,
+      'rank': 2},
+     {'fy2021_country': 'United Arab Emirates',
+      'fy2021_mn': 5807.22727818278,
+      'fy2021_share_pct': 14.66796748921296,
+      'fy2025_country': 'United States Of America',
+      'fy2025_mn': 5087.32854391033,
+      'fy2025_share_pct': 18.420800699512476,
+      'rank': 3},
+     {'fy2021_country': 'Belgium',
+      'fy2021_mn': 1851.70296992717,
+      'fy2021_share_pct': 4.677054584140549,
+      'fy2025_country': 'Belgium',
+      'fy2025_mn': 1390.9754383867,
+      'fy2025_share_pct': 5.036608331323457,
+      'rank': 4},
+     {'fy2021_country': 'Israel',
+      'fy2021_mn': 1477.28647503169,
+      'fy2021_share_pct': 3.7313487056768904,
+      'fy2025_country': 'United Kingdom',
+      'fy2025_mn': 709.689744167912,
+      'fy2025_share_pct': 2.5697285368867915,
+      'rank': 5},
+     {'fy2021_country': 'Thailand',
+      'fy2021_mn': 1160.87783208385,
+      'fy2021_share_pct': 2.93215978715445,
+      'fy2025_country': 'Thailand',
+      'fy2025_mn': 675.202184560709,
+      'fy2025_share_pct': 2.4448519033740417,
+      'rank': 6},
+     {'fy2021_country': 'Singapore',
+      'fy2021_mn': 803.447433476307,
+      'fy2021_share_pct': 2.0293576037220045,
+      'fy2025_country': 'Israel',
+      'fy2025_mn': 596.677314399231,
+      'fy2025_share_pct': 2.1605197689906293,
+      'rank': 7},
+     {'fy2021_country': 'United Kingdom',
+      'fy2021_mn': 702.094478086594,
+      'fy2021_share_pct': 1.7733590379043485,
+      'fy2025_country': 'Singapore',
+      'fy2025_mn': 550.911332756022,
+      'fy2025_share_pct': 1.9948048914492036,
+      'rank': 8},
+     {'fy2021_country': 'Netherland',
+      'fy2021_mn': 695.631115108611,
+      'fy2021_share_pct': 1.757033794635808,
+      'fy2025_country': 'Australia',
+      'fy2025_mn': 360.210281928,
+      'fy2025_share_pct': 1.3042919787937808,
+      'rank': 9},
+     {'fy2021_country': 'Japan',
+      'fy2021_mn': 364.916304818963,
+      'fy2021_share_pct': 0.921710179223987,
+      'fy2025_country': 'France',
+      'fy2025_mn': 356.119344554359,
+      'fy2025_share_pct': 1.289479029053345,
+      'rank': 10},
+     {'fy2021_country': 'Others',
+      'fy2021_mn': 2746.856577488419,
+      'fy2021_share_pct': 6.938044792477775,
+      'fy2025_country': 'Others',
+      'fy2025_mn': 3303.013521529163,
+      'fy2025_share_pct': 11.95994189538155,
+      'rank': None},
+     {'fy2021_country': 'Total',
+      'fy2021_mn': 39591.22,
+      'fy2021_share_pct': 100,
+      'fy2025_country': 'Total',
+      'fy2025_mn': 27617.304084099727,
+      'fy2025_share_pct': 100,
+      'rank': None}]
+    
+        export_port_sheet_rows = [{'fy2024_port_mn': 19653.2354340808,
+      'fy2024_region_total_mn': 19653.2354340808,
+      'fy2025_port_mn': 18579.4140252083,
+      'fy2025_region_total_mn': 18579.4140252083,
+      'growth_pct': -5.46,
+      'port': 'Mumbai',
+      'region': 'Western Region'},
+     {'fy2024_port_mn': 1675.80342940667,
+      'fy2024_region_total_mn': 1675.80342940667,
+      'fy2025_port_mn': 1781.57940668478,
+      'fy2025_region_total_mn': 1781.57940668478,
+      'growth_pct': 6.31,
+      'port': 'Delhi',
+      'region': 'Northern Region'},
+     {'fy2024_port_mn': 2104.52793899442,
+      'fy2024_region_total_mn': 2104.52793899442,
+      'fy2025_port_mn': 1908.0698073743,
+      'fy2025_region_total_mn': 1908.0698073743,
+      'growth_pct': -9.34,
+      'port': 'Jaipur',
+      'region': 'Rajasthan Region'},
+     {'fy2024_port_mn': 1650.50207879132,
+      'fy2024_region_total_mn': 1650.50207879132,
+      'fy2025_port_mn': 1509.95024367268,
+      'fy2025_region_total_mn': 1509.95024367268,
+      'growth_pct': -8.52,
+      'port': 'Kolkata',
+      'region': 'Eastern Region'},
+     {'fy2024_port_mn': 1642.3882803782,
+      'fy2024_region_total_mn': None,
+      'fy2025_port_mn': 2000.58585770473,
+      'fy2025_region_total_mn': None,
+      'growth_pct': 21.81,
+      'port': 'Surat',
+      'region': 'Gujarat Region'},
+     {'fy2024_port_mn': 295.278149236373,
+      'fy2024_region_total_mn': None,
+      'fy2025_port_mn': 273.687385775266,
+      'fy2025_region_total_mn': None,
+      'growth_pct': -7.31,
+      'port': 'Ahmedabad',
+      'region': None},
+     {'fy2024_port_mn': 42.2279694244008,
+      'fy2024_region_total_mn': None,
+      'fy2025_port_mn': 126.336290887155,
+      'fy2025_region_total_mn': None,
+      'growth_pct': None,
+      'port': 'SBD',
+      'region': None},
+     {'fy2024_port_mn': None,
+      'fy2024_region_total_mn': 1979.894399038974,
+      'fy2025_port_mn': None,
+      'fy2025_region_total_mn': 2400.609534367151,
+      'growth_pct': 21.25,
+      'port': None,
+      'region': 'Gujarat Region Total'},
+     {'fy2024_port_mn': 238.279520623263,
+      'fy2024_region_total_mn': None,
+      'fy2025_port_mn': 265.493288769907,
+      'fy2025_region_total_mn': None,
+      'growth_pct': 11.42,
+      'port': 'Bangalore',
+      'region': 'Southern Region'},
+     {'fy2024_port_mn': 910.683461838828,
+      'fy2024_region_total_mn': None,
+      'fy2025_port_mn': 794.802918670209,
+      'fy2025_region_total_mn': None,
+      'growth_pct': -12.72,
+      'port': 'Chennai',
+      'region': None},
+     {'fy2024_port_mn': 164.557404779924,
+      'fy2024_region_total_mn': None,
+      'fy2025_port_mn': 159.55202065919,
+      'fy2025_region_total_mn': None,
+      'growth_pct': -3.04,
+      'port': 'Cochin',
+      'region': None},
+     {'fy2024_port_mn': 231.502179150604,
+      'fy2024_region_total_mn': None,
+      'fy2025_port_mn': 214.547452417411,
+      'fy2025_region_total_mn': None,
+      'growth_pct': -7.32,
+      'port': 'Hyderabad',
+      'region': None},
+     {'fy2024_port_mn': 62.0744875327952,
+      'fy2024_region_total_mn': None,
+      'fy2025_port_mn': 3.27764363618773,
+      'fy2025_region_total_mn': None,
+      'growth_pct': -94.72,
+      'port': 'Vishakhapatnam',
+      'region': None},
+     {'fy2024_port_mn': None,
+      'fy2024_region_total_mn': 1607.0970539254145,
+      'fy2025_port_mn': None,
+      'fy2025_region_total_mn': 1437.6733241529048,
+      'growth_pct': -10.54,
+      'port': None,
+      'region': 'Souther Region Total'},
+     {'fy2024_port_mn': 28671.060334237598,
+      'fy2024_region_total_mn': 28671.0603342376,
+      'fy2025_port_mn': 27617.296341460118,
+      'fy2025_region_total_mn': 27617.296341460118,
+      'growth_pct': -3.68,
+      'port': None,
+      'region': 'Sub Total'},
+     {'fy2024_port_mn': 44.58,
+      'fy2024_region_total_mn': 44.58,
+      'fy2025_port_mn': None,
+      'fy2025_region_total_mn': None,
+      'growth_pct': -100,
+      'port': None,
+      'region': 'Sales to Foreign Tourist'},
+     {'fy2024_port_mn': 28715.6403342376,
+      'fy2024_region_total_mn': 28715.640334237603,
+      'fy2025_port_mn': 27617.296341460118,
+      'fy2025_region_total_mn': 27617.296341460118,
+      'growth_pct': -3.82,
+      'port': None,
+      'region': 'TOTAL'}]
+    
+        with tabs[3]:
+            st.caption("Matched to annual report sheet 3.8: Top 10 export destinations for gems and jewellery exports.")
+            dest_df = pd.DataFrame(export_destination_sheet_rows)
+    
+            dest_table = dest_df.rename(columns={
+                "rank": "Sr.No.",
+                "fy2021_country": "FY2021-22 Country",
+                "fy2021_mn": "FY2021-22 Amount (US$ mn)",
+                "fy2021_share_pct": "FY2021-22 % Share in Export",
+                "fy2025_country": "FY2025-26 Country",
+                "fy2025_mn": "FY2025-26 Amount (US$ mn)",
+                "fy2025_share_pct": "FY2025-26 % Share in Export",
+            })
+            render_excel_download("Download this tab as Excel", {"3.7 Top Destinations": dest_table}, "3_7_top_destinations.xlsx", key="dl_exp_tab_37")
+            render_table(
+                dest_table[["Sr.No.", "FY2021-22 Country", "FY2021-22 Amount (US$ mn)", "FY2021-22 % Share in Export",
+                            "FY2025-26 Country", "FY2025-26 Amount (US$ mn)", "FY2025-26 % Share in Export"]],
+                {
+                    "FY2021-22 Amount (US$ mn)": "{:,.2f}",
+                    "FY2021-22 % Share in Export": "{:,.2f}",
+                    "FY2025-26 Amount (US$ mn)": "{:,.2f}",
+                    "FY2025-26 % Share in Export": "{:,.2f}",
+                },
+                height=470,
+            )
+    
+            pie_left_df = dest_df[dest_df["fy2021_country"].notna() & (~dest_df["fy2021_country"].astype(str).str.lower().eq("total"))].copy()
+            pie_right_df = dest_df[dest_df["fy2025_country"].notna() & (~dest_df["fy2025_country"].astype(str).str.lower().eq("total"))].copy()
             c1, c2 = st.columns(2)
             with c1:
-                start_year = st.selectbox("Start year", available_years, index=0, key="imp_country_start")
+                fig = px.pie(pie_left_df, names="fy2021_country", values="fy2021_share_pct")
+                fig.update_traces(textinfo="label+percent")
+                fig.update_layout(template="plotly_white", height=430, title="% Share of Top 10 export destinations in FY2021-22", margin=dict(l=10, r=10, t=55, b=10))
+                st.plotly_chart(fig, use_container_width=True)
             with c2:
-                end_year = st.selectbox("End year", available_years, index=len(available_years)-1, key="imp_country_end")
-            start_df = pd.DataFrame(DATA["top_import_countries"][year_map[start_year]]).rename(columns={
-                "amount_mn": f"{start_year} (US$ mn)",
-                "share_pct": f"{start_year} % Share",
+                fig = px.pie(pie_right_df, names="fy2025_country", values="fy2025_share_pct")
+                fig.update_traces(textinfo="label+percent")
+                fig.update_layout(template="plotly_white", height=430, title="% Share of Top 10 export destinations in FY2025-26", margin=dict(l=10, r=10, t=55, b=10))
+                st.plotly_chart(fig, use_container_width=True)
+    
+        with tabs[4]:
+            st.caption("Matched to annual report sheet 3.7: Gems and jewellery exports to different regions.")
+            region_df = pd.DataFrame(export_region_sheet_rows)
+            region_table = region_df.rename(columns={
+                "region": "Region",
+                "fy2021_mn": "FY2021-22 (US$ mn)",
+                "fy2021_share_pct": "FY2021-22 % Share",
+                "fy2025_mn": "FY2025-26 (US$ mn)",
+                "fy2025_share_pct": "FY2025-26 % Share",
             })
-            end_df = pd.DataFrame(DATA["top_import_countries"][year_map[end_year]]).rename(columns={
-                "amount_mn": f"{end_year} (US$ mn)",
-                "share_pct": f"{end_year} % Share",
-            })
-            compare = start_df.merge(end_df, on="country", how="outer")
-            value_cols = [f"{start_year} (US$ mn)", f"{end_year} (US$ mn)", f"{start_year} % Share", f"{end_year} % Share"]
-            for col in value_cols:
-                compare[col] = pd.to_numeric(compare[col], errors="coerce")
-            compare["Change (US$ mn)"] = compare[f"{end_year} (US$ mn)"].fillna(0) - compare[f"{start_year} (US$ mn)"].fillna(0)
-            compare["Growth (%)"] = np.where(
-                compare[f"{start_year} (US$ mn)"].fillna(0) != 0,
-                (compare[f"{end_year} (US$ mn)"].fillna(0) - compare[f"{start_year} (US$ mn)"].fillna(0)) / compare[f"{start_year} (US$ mn)"].fillna(0) * 100,
-                np.nan,
-            )
-            order = compare[f"{end_year} (US$ mn)"].fillna(compare[f"{start_year} (US$ mn)"]).sort_values(ascending=False).index
-            compare = compare.loc[order].copy()
-            render_table(compare.rename(columns={"country": "Country"}), {
-                f"{start_year} (US$ mn)": "{:,.2f}",
-                f"{end_year} (US$ mn)": "{:,.2f}",
-                f"{start_year} % Share": "{:,.2f}",
-                f"{end_year} % Share": "{:,.2f}",
-                "Change (US$ mn)": "{:+,.2f}",
-                "Growth (%)": "{:+,.2f}",
-            }, height=420)
-
-    with tabs[3]:
-        region_hist = load_entity_year_wide_workbook(
-            "Regionwise (exports, imports, re-imports).xlsx",
-            "Regionwise - Imports",
-            "region",
-        )
-        if not region_hist.empty:
-            years = sorted([c for c in region_hist.columns if isinstance(c, int)])
-            default_start = 2020 if 2020 in years else years[0]
-            default_end = 2025 if 2025 in years else years[-1]
-            r1, r2 = st.columns(2)
-            with r1:
-                start_year = st.selectbox(
-                    "Start year",
-                    years,
-                    index=years.index(default_start),
-                    format_func=fy_label_generic,
-                    key="imp_region_hist_start",
-                )
-            with r2:
-                end_options = [y for y in years if y >= start_year]
-                end_year = st.selectbox(
-                    "End year",
-                    end_options,
-                    index=end_options.index(default_end) if default_end in end_options else len(end_options) - 1,
-                    format_func=fy_label_generic,
-                    key="imp_region_hist_end",
-                )
-            comp = compare_country_product(region_hist.rename(columns={"region": "country"}), start_year, end_year).rename(columns={"Country": "Region"})
-            start_label = fy_label_generic(start_year)
-            end_label = fy_label_generic(end_year)
-
+            render_excel_download("Download this tab as Excel", {"3.8 Regions": region_table}, "3_8_regions.xlsx", key="dl_exp_tab_38")
             render_table(
-                comp[["Region", "Start Value", "End Value", "Start Share (%)", "End Share (%)", "Change (US$ mn)", "Growth (%)"]].rename(columns={
-                    "Start Value": f"{start_label} (US$ mn)",
-                    "End Value": f"{end_label} (US$ mn)",
-                    "Start Share (%)": f"{start_label} % Share",
-                    "End Share (%)": f"{end_label} % Share",
-                }),
+                region_table[["Region", "FY2021-22 (US$ mn)", "FY2021-22 % Share", "FY2025-26 (US$ mn)", "FY2025-26 % Share"]],
                 {
-                    f"{start_label} (US$ mn)": "{:,.2f}",
-                    f"{end_label} (US$ mn)": "{:,.2f}",
-                    f"{start_label} % Share": "{:,.2f}",
-                    f"{end_label} % Share": "{:,.2f}",
-                    "Change (US$ mn)": "{:+,.2f}",
-                    "Growth (%)": "{:+,.2f}",
+                    "FY2021-22 (US$ mn)": "{:,.2f}",
+                    "FY2021-22 % Share": "{:,.2f}",
+                    "FY2025-26 (US$ mn)": "{:,.2f}",
+                    "FY2025-26 % Share": "{:,.2f}",
                 },
                 height=430,
             )
-            plot_df = comp.sort_values("End Value")
-            fig = go.Figure()
-            fig.add_trace(go.Bar(y=plot_df["Region"], x=plot_df["Start Value"], orientation="h", name=start_label, marker_color="#d9ead3"))
-            fig.add_trace(go.Bar(y=plot_df["Region"], x=plot_df["End Value"], orientation="h", name=end_label, marker_color="#7a1f5c"))
-            fig.update_layout(barmode="group", template="plotly_white", height=430, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="US$ mn", yaxis_title="")
-            st.plotly_chart(fig, use_container_width=True)
-        else:
-            df = df_from("import_regions")
-            region_years = ["FY2020-21", "FY2025-26"]
-            r1, r2 = st.columns(2)
-            with r1:
-                start_year = st.selectbox("Start year", region_years, index=0, key="imp_region_start")
-            with r2:
-                end_year = st.selectbox("End year", region_years, index=len(region_years)-1, key="imp_region_end")
-            year_to_cols = {
-                "FY2020-21": ("fy2020_mn", "fy2020_share_pct"),
-                "FY2025-26": ("fy2025_mn", "fy2025_share_pct"),
-            }
-            start_val_col, start_share_col = year_to_cols[start_year]
-            end_val_col, end_share_col = year_to_cols[end_year]
-            table = df.rename(columns={
+    
+            pie_left_df = region_df[~region_df["region"].astype(str).str.upper().eq("TOTAL")].copy()
+            pie_right_df = pie_left_df.copy()
+            c1, c2 = st.columns(2)
+            with c1:
+                fig = px.pie(pie_left_df, names="region", values="fy2021_share_pct")
+                fig.update_traces(textinfo="label+percent")
+                fig.update_layout(template="plotly_white", height=430, title="Region-wise % share in total exports in FY2021-22", margin=dict(l=10, r=10, t=55, b=10))
+                st.plotly_chart(fig, use_container_width=True)
+            with c2:
+                fig = px.pie(pie_right_df, names="region", values="fy2025_share_pct")
+                fig.update_traces(textinfo="label+percent")
+                fig.update_layout(template="plotly_white", height=430, title="Region-wise % share in total exports in FY2025-26", margin=dict(l=10, r=10, t=55, b=10))
+                st.plotly_chart(fig, use_container_width=True)
+    
+        with tabs[5]:
+            st.caption("Matched to annual report sheet 3.9: Export Performance – Across India's Regions/Port Wise.")
+            port_df = pd.DataFrame(export_port_sheet_rows)
+            port_table = port_df.rename(columns={
                 "region": "Region",
-                start_val_col: f"{start_year} (US$ mn)",
-                start_share_col: f"{start_year} % Share",
-                end_val_col: f"{end_year} (US$ mn)",
-                end_share_col: f"{end_year} % Share",
-            })[["Region", f"{start_year} (US$ mn)", f"{end_year} (US$ mn)", f"{start_year} % Share", f"{end_year} % Share"]]
-            render_table(table, {
-                f"{start_year} (US$ mn)": "{:,.2f}",
-                f"{start_year} % Share": "{:,.2f}",
-                f"{end_year} (US$ mn)": "{:,.2f}",
-                f"{end_year} % Share": "{:,.2f}",
-            }, height=430)
+                "port": "Portwise",
+                "fy2024_port_mn": "FY2024-25 Port Wise (US$ mn)",
+                "fy2024_region_total_mn": "FY2024-25 Regions Total (US$ mn)",
+                "fy2025_port_mn": "FY2025-26 Port Wise (US$ mn)",
+                "fy2025_region_total_mn": "FY2025-26 Regions Total (US$ mn)",
+                "growth_pct": "% Growth / Decline (Y-o-Y)",
+            })
+            render_excel_download("Download this tab as Excel", {"3.9 Port Performance": port_table}, "3_9_port_performance.xlsx", key="dl_exp_tab_39")
+            render_table(
+                port_table[["Region", "Portwise", "FY2024-25 Port Wise (US$ mn)", "FY2024-25 Regions Total (US$ mn)",
+                            "FY2025-26 Port Wise (US$ mn)", "FY2025-26 Regions Total (US$ mn)", "% Growth / Decline (Y-o-Y)"]],
+                {
+                    "FY2024-25 Port Wise (US$ mn)": "{:,.2f}",
+                    "FY2024-25 Regions Total (US$ mn)": "{:,.2f}",
+                    "FY2025-26 Port Wise (US$ mn)": "{:,.2f}",
+                    "FY2025-26 Regions Total (US$ mn)": "{:,.2f}",
+                    "% Growth / Decline (Y-o-Y)": "{:+,.2f}",
+                },
+                height=520,
+            )
+    
+            region_total_rows = port_df[port_df["region"].astype(str).str.contains("Region|Sub Total|TOTAL", na=False) & port_df["port"].isna()].copy()
+            region_total_rows = region_total_rows.rename(columns={
+                "region": "Region",
+                "fy2024_region_total_mn": "FY2024-25",
+                "fy2025_region_total_mn": "FY2025-26",
+            })
+            region_total_rows = region_total_rows[region_total_rows["Region"].notna()].copy()
+    
+            c1, c2 = st.columns(2)
+            with c1:
+                plot_df = region_total_rows[region_total_rows["Region"].isin(["Gujarat Region Total", "Souther Region Total", "Sub Total", "TOTAL"]) == False].copy()
+                if not plot_df.empty:
+                    fig = go.Figure()
+                    fig.add_trace(go.Bar(y=plot_df["Region"], x=plot_df["FY2024-25"], orientation="h", name="FY2024-25", marker_color="#d9ead3"))
+                    fig.add_trace(go.Bar(y=plot_df["Region"], x=plot_df["FY2025-26"], orientation="h", name="FY2025-26", marker_color="#274e3d"))
+                    fig.update_layout(barmode="group", template="plotly_white", height=430, margin=dict(l=10, r=10, t=30, b=10), title="Region totals comparison", xaxis_title="US$ mn", yaxis_title="")
+                    if show_labels:
+                        fig.for_each_trace(lambda tr: tr.update(text=[f"{v:,.0f}" if pd.notna(v) else "" for v in tr.x], textposition="outside"))
+                    st.plotly_chart(fig, use_container_width=True)
+            with c2:
+                port_growth_df = port_df[port_df["port"].notna()].copy()
+                if not port_growth_df.empty:
+                    plot_df = port_growth_df.sort_values("growth_pct", ascending=True)
+                    fig = go.Figure()
+                    fig.add_trace(go.Bar(y=plot_df["port"], x=plot_df["growth_pct"], orientation="h", name="% Growth / Decline", marker_color="#7a1f5c"))
+                    fig.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=30, b=10), title="Port-wise YoY growth/decline", xaxis_title="% Growth / Decline", yaxis_title="")
+                    if show_labels:
+                        add_bar_labels(fig, "h", "{:+,.2f}")
+                    st.plotly_chart(fig, use_container_width=True)
+    
+    
+        extra_trend_sheets = {
+            "4.1": {
+                "title": "Added from annual report sheet 4.1: India’s Exports of Cut & Polished Diamonds.",
+                "columns": {
+                    "Year": "Year",
+                    "Carat in Lakhs": "Carat in Lakhs",
+                    "% Growth wrt carat (y-o-y)": "% Growth wrt carat (Y-o-Y)",
+                    "Amount (US$ in billion)": "Amount (US$ bn)",
+                    "% Growth wrt amount (y-o-y)": "% Growth wrt amount (Y-o-Y)",
+                },
+                "rows": [
+                    {"Year": "2014–15", "Carat in Lakhs": 345.17, "% Growth wrt carat (y-o-y)": -5.05, "Amount (US$ in billion)": 23.16, "% Growth wrt amount (y-o-y)": -5.46},
+                    {"Year": "2015–16", "Carat in Lakhs": 335.13, "% Growth wrt carat (y-o-y)": -2.91, "Amount (US$ in billion)": 20.67, "% Growth wrt amount (y-o-y)": -10.75},
+                    {"Year": "2016–17", "Carat in Lakhs": 322.08, "% Growth wrt carat (y-o-y)": -3.89, "Amount (US$ in billion)": 22.78, "% Growth wrt amount (y-o-y)": 10.21},
+                    {"Year": "2017–18", "Carat in Lakhs": 347.35, "% Growth wrt carat (y-o-y)": 7.85, "Amount (US$ in billion)": 23.72, "% Growth wrt amount (y-o-y)": 4.13},
+                    {"Year": "2018–19", "Carat in Lakhs": 303.08, "% Growth wrt carat (y-o-y)": -12.75, "Amount (US$ in billion)": 23.82, "% Growth wrt amount (y-o-y)": 0.42},
+                    {"Year": "2019–20", "Carat in Lakhs": 257.11, "% Growth wrt carat (y-o-y)": -15.17, "Amount (US$ in billion)": 18.66, "% Growth wrt amount (y-o-y)": -21.66},
+                    {"Year": "2020–21", "Carat in Lakhs": 221.20, "% Growth wrt carat (y-o-y)": -13.97, "Amount (US$ in billion)": 16.29, "% Growth wrt amount (y-o-y)": -12.70},
+                    {"Year": "2021–22", "Carat in Lakhs": 307.40, "% Growth wrt carat (y-o-y)": 38.97, "Amount (US$ in billion)": 24.43, "% Growth wrt amount (y-o-y)": 49.97},
+                    {"Year": "2022–23", "Carat in Lakhs": 246.17, "% Growth wrt carat (y-o-y)": -19.92, "Amount (US$ in billion)": 22.05, "% Growth wrt amount (y-o-y)": -9.74},
+                    {"Year": "2023–24", "Carat in Lakhs": 189.20, "% Growth wrt carat (y-o-y)": -23.14, "Amount (US$ in billion)": 15.97, "% Growth wrt amount (y-o-y)": -27.57},
+                    {"Year": "2024–25", "Carat in Lakhs": 166.45, "% Growth wrt carat (y-o-y)": -12.02, "Amount (US$ in billion)": 13.29, "% Growth wrt amount (y-o-y)": -16.78},
+                    {"Year": "2025–26 (p)", "Carat in Lakhs": 160.04, "% Growth wrt carat (y-o-y)": -3.85, "Amount (US$ in billion)": 12.16, "% Growth wrt amount (y-o-y)": -8.50},
+                ],
+                "qty_col": "Carat in Lakhs",
+                "qty_growth_col": "% Growth wrt carat (y-o-y)",
+                "value_col": "Amount (US$ in billion)",
+                "value_growth_col": "% Growth wrt amount (y-o-y)",
+                "value_title": "Value trend (US$ bn)",
+                "growth_title": "Carat and value growth (Y-o-Y)",
+            },
+            "4.2": {
+                "title": "Added from annual report sheet 4.2: India’s Imports of Rough Diamonds.",
+                "columns": {
+                    "Year": "Year",
+                    "Carat in Lakhs": "Carat in Lakhs",
+                    "% Growth w.r.t. carat (y-o-y)": "% Growth wrt carat (Y-o-Y)",
+                    "Amount (US$ in billion)": "Amount (US$ bn)",
+                    "% Growth w.r.t. amount (y-o-y)": "% Growth wrt amount (Y-o-Y)",
+                },
+                "rows": [
+                    {"Year": "2014–15", "Carat in Lakhs": 1462.24, "% Growth w.r.t. carat (y-o-y)": -9.75, "Amount (US$ in billion)": 16.76, "% Growth w.r.t. amount (y-o-y)": 0.25},
+                    {"Year": "2015–16", "Carat in Lakhs": 1385.07, "% Growth w.r.t. carat (y-o-y)": -5.28, "Amount (US$ in billion)": 14.05, "% Growth w.r.t. amount (y-o-y)": -16.17},
+                    {"Year": "2016–17", "Carat in Lakhs": 1533.24, "% Growth w.r.t. carat (y-o-y)": 10.70, "Amount (US$ in billion)": 17.08, "% Growth w.r.t. amount (y-o-y)": 21.57},
+                    {"Year": "2017–18", "Carat in Lakhs": 1876.65, "% Growth w.r.t. carat (y-o-y)": 22.40, "Amount (US$ in billion)": 18.89, "% Growth w.r.t. amount (y-o-y)": 10.60},
+                    {"Year": "2018–19", "Carat in Lakhs": 1650.18, "% Growth w.r.t. carat (y-o-y)": -12.07, "Amount (US$ in billion)": 15.72, "% Growth w.r.t. amount (y-o-y)": -16.78},
+                    {"Year": "2019–20", "Carat in Lakhs": 1514.70, "% Growth w.r.t. carat (y-o-y)": -8.21, "Amount (US$ in billion)": 13.03, "% Growth w.r.t. amount (y-o-y)": -17.11},
+                    {"Year": "2020–21", "Carat in Lakhs": 1259.59, "% Growth w.r.t. carat (y-o-y)": -16.84, "Amount (US$ in billion)": 10.91, "% Growth w.r.t. amount (y-o-y)": -16.27},
+                    {"Year": "2021–22", "Carat in Lakhs": 1666.12, "% Growth w.r.t. carat (y-o-y)": 32.27, "Amount (US$ in billion)": 18.96, "% Growth w.r.t. amount (y-o-y)": 73.79},
+                    {"Year": "2022–23", "Carat in Lakhs": 1347.63, "% Growth w.r.t. carat (y-o-y)": -19.12, "Amount (US$ in billion)": 17.38, "% Growth w.r.t. amount (y-o-y)": -8.33},
+                    {"Year": "2023–24", "Carat in Lakhs": 1246.17, "% Growth w.r.t. carat (y-o-y)": -7.53, "Amount (US$ in billion)": 14.27, "% Growth w.r.t. amount (y-o-y)": -17.89},
+                    {"Year": "2024–25", "Carat in Lakhs": 1044.34, "% Growth w.r.t. carat (y-o-y)": -16.20, "Amount (US$ in billion)": 10.80, "% Growth w.r.t. amount (y-o-y)": -24.32},
+                    {"Year": "2025–26 (p)", "Carat in Lakhs": 1023.4006841, "% Growth w.r.t. carat (y-o-y)": -2.01, "Amount (US$ in billion)": 10.48, "% Growth w.r.t. amount (y-o-y)": -2.96},
+                ],
+                "qty_col": "Carat in Lakhs",
+                "qty_growth_col": "% Growth w.r.t. carat (y-o-y)",
+                "value_col": "Amount (US$ in billion)",
+                "value_growth_col": "% Growth w.r.t. amount (y-o-y)",
+                "value_title": "Import value trend (US$ bn)",
+                "growth_title": "Carat and value growth (Y-o-Y)",
+            },
+            "5.1": {
+                "title": "Added from annual report sheet 5.1: Polished Lab-grown Diamonds Exports.",
+                "columns": {
+                    "Year": "Year",
+                    "Amount (US$ in million)": "Amount (US$ mn)",
+                    "% Export Growth (y-o-y)": "% Export Growth (Y-o-Y)",
+                },
+                "rows": [
+                    {"Year": "2015-16", "Amount (US$ in million)": 63.50, "% Export Growth (y-o-y)": np.nan},
+                    {"Year": "2016-17", "Amount (US$ in million)": 130.72, "% Export Growth (y-o-y)": 105.86},
+                    {"Year": "2017-18", "Amount (US$ in million)": 216.07, "% Export Growth (y-o-y)": 65.29},
+                    {"Year": "2018-19", "Amount (US$ in million)": 224.55, "% Export Growth (y-o-y)": 3.92},
+                    {"Year": "2019-20", "Amount (US$ in million)": 421.09, "% Export Growth (y-o-y)": 87.53},
+                    {"Year": "2020-21", "Amount (US$ in million)": 636.44, "% Export Growth (y-o-y)": 51.14},
+                    {"Year": "2021-22", "Amount (US$ in million)": 1314.02, "% Export Growth (y-o-y)": 106.46},
+                    {"Year": "2022-23", "Amount (US$ in million)": 1680.29, "% Export Growth (y-o-y)": 27.87},
+                    {"Year": "2023-24", "Amount (US$ in million)": 1402.44, "% Export Growth (y-o-y)": -16.54},
+                    {"Year": "2024–25", "Amount (US$ in million)": 1267.28, "% Export Growth (y-o-y)": -9.64},
+                    {"Year": "2025–26 (p)", "Amount (US$ in million)": 1133.00, "% Export Growth (y-o-y)": -10.60},
+                ],
+                "value_col": "Amount (US$ in million)",
+                "value_growth_col": "% Export Growth (y-o-y)",
+                "value_title": "Export value trend (US$ mn)",
+                "growth_title": "Export growth (Y-o-Y)",
+            },
+            "5.2": {
+                "title": "Added from annual report sheet 5.2: Rough Lab-grown Diamonds Imports.",
+                "columns": {
+                    "Year": "Year",
+                    "Amount (US$ in million)": "Amount (US$ mn)",
+                    "% Export Growth (y-o-y)": "% Import Growth (Y-o-Y)",
+                },
+                "rows": [
+                    {"Year": "2015-16", "Amount (US$ in million)": 14.29, "% Export Growth (y-o-y)": np.nan},
+                    {"Year": "2016-17", "Amount (US$ in million)": 114.73, "% Export Growth (y-o-y)": 702.87},
+                    {"Year": "2017-18", "Amount (US$ in million)": 240.95, "% Export Growth (y-o-y)": 110.01},
+                    {"Year": "2018-19", "Amount (US$ in million)": 135.77, "% Export Growth (y-o-y)": -43.65},
+                    {"Year": "2019-20", "Amount (US$ in million)": 343.55, "% Export Growth (y-o-y)": 153.04},
+                    {"Year": "2020-21", "Amount (US$ in million)": 616.08, "% Export Growth (y-o-y)": 79.33},
+                    {"Year": "2021-22", "Amount (US$ in million)": 1377.08, "% Export Growth (y-o-y)": 123.52},
+                    {"Year": "2022-23", "Amount (US$ in million)": 1258.23, "% Export Growth (y-o-y)": -8.63},
+                    {"Year": "2023-24", "Amount (US$ in million)": 1176.05, "% Export Growth (y-o-y)": -6.53},
+                    {"Year": "2024–25", "Amount (US$ in million)": 863.36, "% Export Growth (y-o-y)": -26.59},
+                    {"Year": "2025–26 (p)", "Amount (US$ in million)": 1176.04871388233, "% Export Growth (y-o-y)": 36.22},
+                ],
+                "value_col": "Amount (US$ in million)",
+                "value_growth_col": "% Export Growth (y-o-y)",
+                "value_title": "Import value trend (US$ mn)",
+                "growth_title": "Import growth (Y-o-Y)",
+            },
+        }
+    
+        extra_market_sheets = {
+            "4.3": {
+                "title": "Added from annual report sheet 4.3: Cut and Polished Diamonds – Key Export Markets.",
+                "entity_col": "Country",
+                "latest_value_col": "2025–2026 (P) US$ in million",
+                "latest_share_col": "2025–2026 (P) % share",
+                "growth_col": "% Growth (y-o-y) ",
+                "rows": [
+                    {"Country": "Hongkong", "2023–2024 US$ in million": 4360.30268621813, "2023–2024% share": 27.3081883171032, "2024–2025 (P) US$ in million": 3221.39412864985, "2024–2025 (P) % share": 24.2348011203168, "2025–2026 (P) US$ in million": 4049.16929572192, "2025–2026 (P) % share": 33.2995646318751, "% Growth (y-o-y) ": 25.70},
+                    {"Country": "United Arab Emirates", "2023–2024 US$ in million": 1714.38510330805, "2023–2024% share": 10.7370415813446, "2024–2025 (P) US$ in million": 1875.61163416224, "2024–2025 (P) % share": 14.1103736821937, "2025–2026 (P) US$ in million": 2552.16930810255, "2025–2026 (P) % share": 20.9885338497551, "% Growth (y-o-y) ": 36.07},
+                    {"Country": "United States Of America", "2023–2024 US$ in million": 5598.81236751615, "2023–2024% share": 35.0648644112521, "2024–2025 (P) US$ in million": 4819.02097316472, "2024–2025 (P) % share": 36.2538733899756, "2025–2026 (P) US$ in million": 1866.07464420024, "2025–2026 (P) % share": 15.3462275059977, "% Growth (y-o-y) ": -61.28},
+                    {"Country": "Belgium", "2023–2024 US$ in million": 1691.5998858009, "2023–2024% share": 10.5943397885314, "2024–2025 (P) US$ in million": 978.795235114881, "2024–2025 (P) % share": 7.36355345331952, "2025–2026 (P) US$ in million": 1228.18946916642, "2025–2026 (P) % share": 10.100386430349, "% Growth (y-o-y) ": 25.48},
+                    {"Country": "Israel", "2023–2024 US$ in million": 645.16384313475, "2023–2024% share": 4.04060382766473, "2024–2025 (P) US$ in million": 486.002521066785, "2024–2025 (P) % share": 3.65623514902306, "2025–2026 (P) US$ in million": 524.56124336086, "2025–2026 (P) % share": 4.31388755346112, "% Growth (y-o-y) ": 7.93},
+                    {"Country": "Thailand", "2023–2024 US$ in million": 502.706911618462, "2023–2024% share": 3.1484087226736, "2024–2025 (P) US$ in million": 359.769246489983, "2024–2025 (P) % share": 2.70657230679974, "2025–2026 (P) US$ in million": 385.565825209651, "2025–2026 (P) % share": 3.17081682160734, "% Growth (y-o-y) ": 7.17},
+                    {"Country": "Netherland", "2023–2024 US$ in million": 15.1103935527482, "2023–2024% share": 0.0946350522839249, "2024–2025 (P) US$ in million": 382.284901668238, "2024–2025 (P) % share": 2.87595934965976, "2025–2026 (P) US$ in million": 220.602957642524, "2025–2026 (P) % share": 1.81419493962905, "% Growth (y-o-y) ": -42.29},
+                    {"Country": "Japan", "2023–2024 US$ in million": 196.370518243588, "2023–2024% share": 1.22985110851884, "2024–2025 (P) US$ in million": 161.726020132628, "2024–2025 (P) % share": 1.21667755554558, "2025–2026 (P) US$ in million": 148.978385563025, "2025–2026 (P) % share": 1.22516867448583, "% Growth (y-o-y) ": -7.88},
+                    {"Country": "United Kingdom", "2023–2024 US$ in million": 163.44839777003, "2023–2024% share": 1.02366279307644, "2024–2025 (P) US$ in million": 155.390722491942, "2024–2025 (P) % share": 1.16901661365879, "2025–2026 (P) US$ in million": 147.694648243603, "2025–2026 (P) % share": 1.21461147355981, "% Growth (y-o-y) ": -4.95},
+                    {"Country": "Canada", "2023–2024 US$ in million": 6.65391871122869, "2023–2024% share": 0.0416729016972285, "2024–2025 (P) US$ in million": 3.65095897526861, "2024–2025 (P) % share": 0.0274664512104125, "2025–2026 (P) US$ in million": 134.932591701086, "2025–2026 (P) % share": 1.1096588534947, "% Growth (y-o-y) ": 3595.81},
+                    {"Country": "Others", "2023–2024 US$ in million": 1072.4659741259657, "2023–2024% share": 6.716757254177459, "2024–2025 (P) US$ in million": 848.7836580834646, "2024–2025 (P) % share": 6.38546645032898, "2025–2026 (P) US$ in million": 901.8916310881195, "2025–2026 (P) % share": 7.416975657456721, "% Growth (y-o-y) ": 6.26},
+                    {"Country": "Total", "2023–2024 US$ in million": 15967.02, "2023–2024% share": 100.0, "2024–2025 (P) US$ in million": 13292.43, "2024–2025 (P) % share": 100.0, "2025–2026 (P) US$ in million": 12159.83, "2025–2026 (P) % share": 100.0, "% Growth (y-o-y) ": -8.52},
+                ],
+            },
+            "4.4": {
+                "title": "Added from annual report sheet 4.4: Rough Diamonds – Import Markets.",
+                "entity_col": "Country",
+                "latest_value_col": "2025–2026 (P) US$ in million",
+                "latest_share_col": "2025–2026 (P) % share",
+                "growth_col": "% Growth (y-o-y) US$ million",
+                "rows": [
+                    {"Country": "United Arab Emirates", "2023–2024 US$ in million": 8557.00300099188, "2023–2024% share": 59.97864265506776, "2024–2025 (P) US$ in million": 7147.91215637204, "2024–2025 (P) % share": 66.15656155997422, "2025–2026 (P) US$ in million": 7162.15960734628, "2025–2026 (P) % share": 68.34884142849134, "% Growth (y-o-y) US$ million": 0.20},
+                    {"Country": "Belgium", "2023–2024 US$ in million": 2462.1536546073, "2023–2024% share": 17.25798555807945, "2024–2025 (P) US$ in million": 1764.26822019755, "2024–2025 (P) % share": 16.328952645809537, "2025–2026 (P) US$ in million": 1613.72746474306, "2025–2026 (P) % share": 15.399880572808364, "% Growth (y-o-y) US$ million": -8.53},
+                    {"Country": "South Africa", "2023–2024 US$ in million": 504.205652770689, "2023–2024% share": 3.5341311284678647, "2024–2025 (P) US$ in million": 325.567503161507, "2024–2025 (P) % share": 3.0132472383045177, "2025–2026 (P) US$ in million": 441.707537795012, "2025–2026 (P) % share": 4.215236760090394, "% Growth (y-o-y) US$ million": 35.67},
+                    {"Country": "Israel", "2023–2024 US$ in million": 277.10651705012, "2023–2024% share": 1.9423240545332328, "2024–2025 (P) US$ in million": 237.361221560396, "2024–2025 (P) % share": 2.1968655913199076, "2025–2026 (P) US$ in million": 348.201215972245, "2025–2026 (P) % share": 3.322901331503961, "% Growth (y-o-y) US$ million": 46.70},
+                    {"Country": "Botswana", "2023–2024 US$ in million": 273.827661910077, "2023–2024% share": 1.9193415592904972, "2024–2025 (P) US$ in million": 193.079007223112, "2024–2025 (P) % share": 1.7870173762428754, "2025–2026 (P) US$ in million": 335.950588503566, "2025–2026 (P) % share": 3.2059929909808846, "% Growth (y-o-y) US$ million": 74.00},
+                    {"Country": "Russia", "2023–2024 US$ in million": 1151.29174567386, "2023–2024% share": 8.069754819239561, "2024–2025 (P) US$ in million": 421.726860476125, "2024–2025 (P) % share": 3.9032375323347868, "2025–2026 (P) US$ in million": 307.870880392331, "2025–2026 (P) % share": 2.938026955277831, "% Growth (y-o-y) US$ million": -27.00},
+                    {"Country": "Hongkong", "2023–2024 US$ in million": 220.539972500197, "2023–2024% share": 1.5458318993477633, "2024–2025 (P) US$ in million": 279.079671564273, "2024–2025 (P) % share": 2.5829852225478636, "2025–2026 (P) US$ in million": 153.209705436022, "2025–2026 (P) % share": 1.4620877551250924, "% Growth (y-o-y) US$ million": -45.10},
+                    {"Country": "Canada", "2023–2024 US$ in million": 635.58504349326, "2023–2024% share": 4.455009329337516, "2024–2025 (P) US$ in million": 310.496425362037, "2024–2025 (P) % share": 2.873758858424671, "2025–2026 (P) US$ in million": 62.9679434417834, "2025–2026 (P) % share": 0.6009061815609693, "% Growth (y-o-y) US$ million": -79.72},
+                    {"Country": "Singapore", "2023–2024 US$ in million": 14.500921470074, "2023–2024% share": 0.10164137922143446, "2024–2025 (P) US$ in million": 8.29620225305573, "2024–2025 (P) % share": 0.07678440963757577, "2025–2026 (P) US$ in million": 42.795227689181, "2025–2026 (P) % share": 0.4083969628691066, "% Growth (y-o-y) US$ million": 415.84},
+                    {"Country": "Srilanka Dsr", "2023–2024 US$ in million": 26.8519564427123, "2023–2024% share": 0.18821354858473235, "2024–2025 (P) US$ in million": 10.7363858983855, "2024–2025 (P) % share": 0.09936920866955463, "2025–2026 (P) US$ in million": 3.51251781124392, "2025–2026 (P) % share": 0.03352013024803495, "% Growth (y-o-y) US$ million": -67.28},
+                    {"Country": "Others", "2023–2024 US$ in million": 143.68387308983256, "2023–2024% share": 1.0071240688302001, "2024–2025 (P) US$ in million": 106.01634593152085, "2024–2025 (P) % share": 0.9812203567344915, "2025–2026 (P) US$ in million": 6.728345393179552, "2025–2026 (P) % share": 0.06420893104404608, "% Growth (y-o-y) US$ million": -93.65},
+                    {"Country": "Total", "2023–2024 US$ in million": 14266.75, "2023–2024% share": 100.0, "2024–2025 (P) US$ in million": 10804.54, "2024–2025 (P) % share": 100.0, "2025–2026 (P) US$ in million": 10478.8310345239, "2025–2026 (P) % share": 100.0, "% Growth (y-o-y) US$ million": -3.01},
+                ],
+            },
+            "5.3": {
+                "title": "Added from annual report sheet 5.3: Polished Lab Grown Diamonds – Export Markets.",
+                "entity_col": "Country",
+                "latest_value_col": "2025–2026 (P) US$ in million",
+                "latest_share_col": "2025–2026 (P) % share",
+                "growth_col": "% Growth (y-o-y) US$ million",
+                "rows": [
+                    {"Country": "Hongkong", "2023–2024 US$ in million": 236.734909409824, "2023–2024% share": 16.88026212094618, "2024–2025 (P) US$ in million": 205.708261752768, "2024–2025 (P) % share": 16.232295007822785, "2025–2026 (P) US$ in million": 412.149450275541, "2025–2026 (P) % share": 36.37669742455725, "% Growth (y-o-y) US$ million": 100.36},
+                    {"Country": "United States Of America", "2023–2024 US$ in million": 809.001338452649, "2023–2024% share": 57.685428327075066, "2024–2025 (P) US$ in million": 675.900918810792, "2024–2025 (P) % share": 53.334868598429644, "2025–2026 (P) US$ in million": 284.232994175999, "2025–2026 (P) % share": 25.086670915862804, "% Growth (y-o-y) US$ million": -57.95},
+                    {"Country": "United Arab Emirates", "2023–2024 US$ in million": 204.202332530751, "2023–2024% share": 14.560543298920193, "2024–2025 (P) US$ in million": 207.622732443461, "2024–2025 (P) % share": 16.383364550535212, "2025–2026 (P) US$ in million": 144.644498351582, "2025–2026 (P) % share": 12.766459222849102, "% Growth (y-o-y) US$ million": -30.33},
+                    {"Country": "Israel", "2023–2024 US$ in million": 21.7105942318728, "2023–2024% share": 1.548062862165722, "2024–2025 (P) US$ in million": 27.2299621408198, "2024–2025 (P) % share": 2.148697260651881, "2025–2026 (P) US$ in million": 39.1805206672407, "2025–2026 (P) % share": 3.458109538411311, "% Growth (y-o-y) US$ million": 43.89},
+                    {"Country": "Belgium", "2023–2024 US$ in million": 25.3464810005498, "2023–2024% share": 1.8073179160585082, "2024–2025 (P) US$ in million": 15.3571096300844, "2024–2025 (P) % share": 1.2118187760616372, "2025–2026 (P) US$ in million": 33.3287759086116, "2025–2026 (P) % share": 2.9416290521506157, "% Growth (y-o-y) US$ million": 117.03},
+                    {"Country": "Thailand", "2023–2024 US$ in million": 15.0135286938405, "2023–2024% share": 1.0705320155112596, "2024–2025 (P) US$ in million": 15.8493714679426, "2024–2025 (P) % share": 1.2506628132681292, "2025–2026 (P) US$ in million": 31.578125103543, "2025–2026 (P) % share": 2.7871149685106573, "% Growth (y-o-y) US$ million": 99.24},
+                    {"Country": "China P.Rp", "2023–2024 US$ in million": 20.8764289231046, "2023–2024% share": 1.48858312975401, "2024–2025 (P) US$ in million": 33.7683223589269, "2024–2025 (P) % share": 2.6646346907940073, "2025–2026 (P) US$ in million": 26.952294150581, "2025–2026 (P) % share": 2.3788347856775807, "% Growth (y-o-y) US$ million": -20.18},
+                    {"Country": "Korea  R.P", "2023–2024 US$ in million": 7.7775528001076, "2023–2024% share": 0.5545744404685043, "2024–2025 (P) US$ in million": 8.83466751370293, "2024–2025 (P) % share": 0.697137432189325, "2025–2026 (P) US$ in million": 24.7448517221775, "2025–2026 (P) % share": 2.1840038445068957, "% Growth (y-o-y) US$ million": 180.09},
+                    {"Country": "United Kingdom", "2023–2024 US$ in million": 23.6468324164234, "2023–2024% share": 1.686125339580989, "2024–2025 (P) US$ in million": 24.6418349029268, "2024–2025 (P) % share": 1.9444699511345205, "2025–2026 (P) US$ in million": 22.6834804229442, "2025–2026 (P) % share": 2.0020652783344923, "% Growth (y-o-y) US$ million": -7.95},
+                    {"Country": "Canada", "2023–2024 US$ in million": 2.46445261366512, "2023–2024% share": 0.17572653820692402, "2024–2025 (P) US$ in million": 1.75375505875948, "2024–2025 (P) % share": 0.13838758464382583, "2025–2026 (P) US$ in million": 18.5729959314969, "2025–2026 (P) % share": 1.6392700580236355, "% Growth (y-o-y) US$ million": 959.04},
+                    {"Country": "Others", "2023–2024 US$ in million": 35.66176534157216, "2023–2024% share": 2.5428440113126425, "2024–2025 (P) US$ in million": 50.61080655344608, "2024–2025 (P) % share": 3.9936633344690304, "2025–2026 (P) US$ in million": 94.93605009244311, "2025–2026 (P) % share": 8.379144911115652, "% Growth (y-o-y) US$ million": 87.58},
+                    {"Country": "Total", "2023–2024 US$ in million": 1402.43621641436, "2023–2024% share": 100.0, "2024–2025 (P) US$ in million": 1267.27774263363, "2024–2025 (P) % share": 100.0, "2025–2026 (P) US$ in million": 1133.00403680216, "2025–2026 (P) % share": 100.0, "% Growth (y-o-y) US$ million": -10.60},
+                ],
+            },
+        }
+    
+        def render_extra_trend_sheet(sheet_key):
+            cfg = extra_trend_sheets[sheet_key]
+            df = pd.DataFrame(cfg["rows"])
+            st.caption(cfg["title"])
+            render_excel_download("Download this tab as Excel", {f"{sheet_key} Trend Sheet": df}, f"{sheet_key.replace('.', '_')}_trend_sheet.xlsx", key=f"dl_extra_trend_{sheet_key}")
+            render_table(
+                df.rename(columns=cfg["columns"]),
+                {col: "{:,.2f}" for col in df.columns if col != "Year"},
+                height=420,
+            )
+            c1, c2 = st.columns(2)
+            with c1:
+                fig = go.Figure()
+                if cfg.get("qty_col"):
+                    fig.add_trace(go.Bar(x=df["Year"], y=df[cfg["qty_col"]], name=cfg["qty_col"], marker_color="#d9ead3"))
+                    fig.add_trace(go.Scatter(x=df["Year"], y=df[cfg["value_col"]], name=cfg["value_col"], mode="lines+markers", yaxis="y2", line=dict(color="#7a1f5c", width=3)))
+                    fig.update_layout(
+                        template="plotly_white",
+                        height=360,
+                        margin=dict(l=10, r=10, t=45, b=10),
+                        title=cfg["value_title"],
+                        yaxis_title=cfg["qty_col"],
+                        yaxis2=dict(title=cfg["value_col"], overlaying="y", side="right"),
+                        xaxis_title="",
+                    )
+                    if show_labels:
+                        add_bar_labels(fig, "v", "{:,.2f}")
+                else:
+                    fig.add_trace(go.Bar(x=df["Year"], y=df[cfg["value_col"]], name=cfg["value_col"], marker_color="#5a7d4d"))
+                    fig.update_layout(
+                        template="plotly_white",
+                        height=360,
+                        margin=dict(l=10, r=10, t=45, b=10),
+                        title=cfg["value_title"],
+                        yaxis_title=cfg["value_col"],
+                        xaxis_title="",
+                    )
+                    if show_labels:
+                        add_bar_labels(fig, "v", "{:,.2f}")
+                st.plotly_chart(fig, use_container_width=True)
+            with c2:
+                fig = go.Figure()
+                if cfg.get("qty_growth_col"):
+                    fig.add_trace(go.Scatter(x=df["Year"], y=df[cfg["qty_growth_col"]], name=cfg["qty_growth_col"], mode="lines+markers", line=dict(color="#274e3d", width=3)))
+                    fig.add_trace(go.Scatter(x=df["Year"], y=df[cfg["value_growth_col"]], name=cfg["value_growth_col"], mode="lines+markers", line=dict(color="#b88746", width=3)))
+                    fig.add_hline(y=0, line_dash="dot", line_color="#6b7280")
+                    fig.update_layout(
+                        template="plotly_white",
+                        height=360,
+                        margin=dict(l=10, r=10, t=45, b=10),
+                        title=cfg["growth_title"],
+                        yaxis_title="% Growth",
+                        xaxis_title="",
+                    )
+                else:
+                    fig.add_trace(go.Bar(x=df["Year"], y=df[cfg["value_growth_col"]], name=cfg["value_growth_col"], marker_color="#7a1f5c"))
+                    fig.add_hline(y=0, line_dash="dot", line_color="#6b7280")
+                    fig.update_layout(
+                        template="plotly_white",
+                        height=360,
+                        margin=dict(l=10, r=10, t=45, b=10),
+                        title=cfg["growth_title"],
+                        yaxis_title="% Growth",
+                        xaxis_title="",
+                    )
+                    if show_labels:
+                        add_bar_labels(fig, "v", "{:+,.2f}")
+                st.plotly_chart(fig, use_container_width=True)
+    
+        def render_extra_market_sheet(sheet_key):
+            cfg = extra_market_sheets[sheet_key]
+            df = pd.DataFrame(cfg["rows"])
+            st.caption(cfg["title"])
+            render_excel_download("Download this tab as Excel", {f"{sheet_key} Market Sheet": df}, f"{sheet_key.replace('.', '_')}_market_sheet.xlsx", key=f"dl_extra_market_{sheet_key}")
+            render_table(
+                df,
+                {col: "{:,.2f}" for col in df.columns if col != cfg["entity_col"]},
+                height=440,
+            )
+            plot_df = df[~df[cfg["entity_col"]].astype(str).str.lower().eq("total")].copy()
+            c1, c2 = st.columns(2)
+            with c1:
+                bar_df = plot_df.sort_values(cfg["latest_value_col"], ascending=True)
+                fig = go.Figure()
+                fig.add_trace(go.Bar(y=bar_df[cfg["entity_col"]], x=bar_df[cfg["latest_value_col"]], orientation="h", marker_color="#5a7d4d", name=cfg["latest_value_col"]))
+                fig.update_layout(
+                    template="plotly_white",
+                    height=420,
+                    margin=dict(l=10, r=10, t=45, b=10),
+                    title=f"Latest-year values: {sheet_key}",
+                    xaxis_title="US$ mn",
+                    yaxis_title="",
+                )
+                if show_labels:
+                    add_bar_labels(fig, "h", "{:,.2f}")
+                st.plotly_chart(fig, use_container_width=True)
+            with c2:
+                pie_df = plot_df.copy()
+                fig = px.pie(pie_df, names=cfg["entity_col"], values=cfg["latest_share_col"])
+                fig.update_traces(textinfo="label+percent")
+                fig.update_layout(
+                    template="plotly_white",
+                    height=420,
+                    margin=dict(l=10, r=10, t=45, b=10),
+                    title=f"Latest-year share mix: {sheet_key}",
+                )
+                st.plotly_chart(fig, use_container_width=True)
+    
+        with tabs[6]:
+            render_extra_trend_sheet("4.1")
+    
+        with tabs[7]:
+            render_extra_trend_sheet("4.2")
+    
+        with tabs[8]:
+            render_extra_market_sheet("4.3")
+    
+        with tabs[9]:
+            render_extra_market_sheet("4.4")
+    
+        with tabs[10]:
+            render_extra_trend_sheet("5.1")
+    
+        with tabs[11]:
+            render_extra_trend_sheet("5.2")
+    
+        with tabs[12]:
+            render_extra_market_sheet("5.3")
 
 
 def section_imports():
@@ -3156,60 +3999,164 @@ def section_imports():
 
     with tabs[0]:
         df = df_from("monthly_imports").copy()
-        df["month"] = df["month"].astype(str)
+        df["month"] = df["month"].astype(str).str.strip()
+        if not df["month"].str.contains("Rs", case=False, na=False).any():
+            df = pd.concat(
+                [
+                    df,
+                    pd.DataFrame(
+                        [
+                            {
+                                "month": "Total (Rs. crores)",
+                                "fy2025_mn": 166647.96,
+                                "fy2026_mn": 202210.31,
+                                "growth_pct": 21.34,
+                            }
+                        ]
+                    ),
+                ],
+                ignore_index=True,
+            )
+
+        rs_mask = df["month"].str.contains("Rs", case=False, na=False)
         total_mask = df["month"].str.contains("total", case=False, na=False)
+        total_usd_mask = total_mask & ~rs_mask
         monthly = df.loc[~total_mask].copy()
-        total_row = df.loc[total_mask].copy()
-        table = monthly.rename(columns={
-            "month": "Month",
-            "fy2025_mn": "FY2024-25 (US$ mn)",
-            "fy2026_mn": "FY2025-26 (US$ mn)",
-            "growth_pct": "% Import Growth (Y-o-Y)",
-        })
-        if not total_row.empty:
-            total_disp = total_row.rename(columns={
+        total_usd = df.loc[total_usd_mask].copy()
+        total_rs = df.loc[rs_mask].copy()
+
+        table = monthly.rename(
+            columns={
                 "month": "Month",
                 "fy2025_mn": "FY2024-25 (US$ mn)",
                 "fy2026_mn": "FY2025-26 (US$ mn)",
                 "growth_pct": "% Import Growth (Y-o-Y)",
-            })[["Month", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Import Growth (Y-o-Y)"]]
-            st.markdown("<div class='report-band'>Monthly imports</div>", unsafe_allow_html=True)
-            render_table(
-                pd.concat([table[["Month", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Import Growth (Y-o-Y)"]], total_disp], ignore_index=True),
-                {
-                    "FY2024-25 (US$ mn)": "{:,.2f}",
-                    "FY2025-26 (US$ mn)": "{:,.2f}",
-                    "% Import Growth (Y-o-Y)": "{:+,.2f}",
-                },
-                height=430,
+            }
+        )
+
+        table_parts = [
+            table[["Month", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Import Growth (Y-o-Y)"]]
+        ]
+        if not total_usd.empty:
+            total_usd_disp = total_usd.rename(
+                columns={
+                    "month": "Month",
+                    "fy2025_mn": "FY2024-25 (US$ mn)",
+                    "fy2026_mn": "FY2025-26 (US$ mn)",
+                    "growth_pct": "% Import Growth (Y-o-Y)",
+                }
+            )[["Month", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Import Growth (Y-o-Y)"]]
+            table_parts.append(total_usd_disp)
+        if not total_rs.empty:
+            total_rs_disp = total_rs.rename(
+                columns={
+                    "month": "Month",
+                    "fy2025_mn": "FY2024-25 (Rs. crores)",
+                    "fy2026_mn": "FY2025-26 (Rs. crores)",
+                    "growth_pct": "% Import Growth (Y-o-Y)",
+                }
             )
+            total_rs_disp["FY2024-25 (US$ mn)"] = np.nan
+            total_rs_disp["FY2025-26 (US$ mn)"] = np.nan
+            total_rs_disp["Month"] = "Total (Rs. crores)"
+            total_rs_disp = total_rs_disp[
+                ["Month", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Import Growth (Y-o-Y)",
+                 "FY2024-25 (Rs. crores)", "FY2025-26 (Rs. crores)"]
+            ]
         else:
-            render_table(
-                table[["Month", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Import Growth (Y-o-Y)"]],
-                {
-                    "FY2024-25 (US$ mn)": "{:,.2f}",
-                    "FY2025-26 (US$ mn)": "{:,.2f}",
-                    "% Import Growth (Y-o-Y)": "{:+,.2f}",
-                },
-                height=390,
-            )
+            total_rs_disp = pd.DataFrame()
+
+        base_table = pd.concat(table_parts, ignore_index=True)
+        if not total_rs_disp.empty:
+            base_table["FY2024-25 (Rs. crores)"] = np.nan
+            base_table["FY2025-26 (Rs. crores)"] = np.nan
+            final_table = pd.concat([base_table, total_rs_disp], ignore_index=True)
+        else:
+            final_table = base_table
+
+        st.markdown("<div class='report-band'>Monthly imports</div>", unsafe_allow_html=True)
+        render_excel_download("Download this tab as Excel", {"3.10 Monthly Imports": final_table}, "3_10_monthly_imports.xlsx", key="dl_imp_tab_310")
+        render_table(
+            final_table[
+                [
+                    "Month",
+                    "FY2024-25 (US$ mn)",
+                    "FY2025-26 (US$ mn)",
+                    "% Import Growth (Y-o-Y)",
+                    "FY2024-25 (Rs. crores)",
+                    "FY2025-26 (Rs. crores)",
+                ]
+            ],
+            {
+                "FY2024-25 (US$ mn)": "{:,.2f}",
+                "FY2025-26 (US$ mn)": "{:,.2f}",
+                "% Import Growth (Y-o-Y)": "{:+,.2f}",
+                "FY2024-25 (Rs. crores)": "{:,.2f}",
+                "FY2025-26 (Rs. crores)": "{:,.2f}",
+            },
+            height=470,
+        )
+
         c1, c2 = st.columns(2)
         with c1:
             fig = go.Figure()
             fig.add_trace(go.Bar(x=monthly["month"], y=monthly["fy2025_mn"], name="FY2024-25", marker_color="#d9ead3"))
             fig.add_trace(go.Bar(x=monthly["month"], y=monthly["fy2026_mn"], name="FY2025-26", marker_color="#b88746"))
-            fig.update_layout(barmode="group", template="plotly_white", height=380, margin=dict(l=10, r=10, t=10, b=10), yaxis_title="US$ mn", xaxis_title="")
+            fig.update_layout(
+                barmode="group",
+                template="plotly_white",
+                height=380,
+                margin=dict(l=10, r=10, t=10, b=10),
+                yaxis_title="US$ mn",
+                xaxis_title="",
+            )
             if show_labels:
                 add_bar_labels(fig, "v", "{:,.0f}")
             st.plotly_chart(fig, use_container_width=True)
+
         with c2:
             line_df = monthly.melt(id_vars="month", value_vars=["fy2025_mn", "fy2026_mn"], var_name="series", value_name="value")
             line_df["series"] = line_df["series"].replace({"fy2025_mn": "FY2024-25", "fy2026_mn": "FY2025-26"})
             fig2 = px.line(line_df, x="month", y="value", color="series", markers=True)
-            fig2.update_layout(template="plotly_white", height=380, margin=dict(l=10, r=10, t=10, b=10), yaxis_title="US$ mn", xaxis_title="", legend_title_text="")
+            fig2.update_layout(
+                template="plotly_white",
+                height=380,
+                margin=dict(l=10, r=10, t=10, b=10),
+                yaxis_title="US$ mn",
+                xaxis_title="",
+                legend_title_text="",
+            )
             if show_labels:
                 add_line_labels(fig2, "{:,.0f}")
             st.plotly_chart(fig2, use_container_width=True)
+
+        growth_df = pd.concat([monthly, total_usd], ignore_index=True)
+        if not growth_df.empty:
+            growth_df["display_month"] = growth_df["month"].replace({"Total (US$million)": "Total (US$million)"})
+            fig3 = go.Figure()
+            fig3.add_trace(
+                go.Scatter(
+                    x=growth_df["month"],
+                    y=growth_df["growth_pct"],
+                    mode="lines+markers+text" if show_labels else "lines+markers",
+                    name="% Import Growth",
+                    line=dict(color="#7a1f5c", width=3),
+                    marker=dict(size=8, color="#7a1f5c"),
+                    text=[f"{v:.2f}" if pd.notna(v) else "" for v in growth_df["growth_pct"]] if show_labels else None,
+                    textposition="top center",
+                )
+            )
+            fig3.add_hline(y=0, line_dash="dot", line_color="#4b5563")
+            fig3.update_layout(
+                template="plotly_white",
+                height=400,
+                margin=dict(l=10, r=10, t=45, b=10),
+                title="Figure 11: Gems and Jewellery import growth (%)",
+                yaxis_title="YoY growth (%)",
+                xaxis_title="",
+                showlegend=False,
+            )
+            st.plotly_chart(fig3, use_container_width=True)
 
     with tabs[1]:
         df = df_from("import_commodities").copy()
@@ -3220,6 +4167,7 @@ def section_imports():
             "fy2025_mn": "FY2025-26 (US$ mn)",
             "growth_pct": "% Growth / Decline (Y-o-Y)",
         })
+        render_excel_download("Download this tab as Excel", {"3.11 Import Commodities": full_table}, "3_11_import_commodities.xlsx", key="dl_imp_tab_311")
         render_table(
             full_table[["Commodity", "FY2024-25 (US$ mn)", "FY2025-26 (US$ mn)", "% Growth / Decline (Y-o-Y)"]],
             {
@@ -3254,7 +4202,7 @@ def section_imports():
         )
         if not country_hist.empty:
             years = sorted([c for c in country_hist.columns if isinstance(c, int)])
-            default_start = 2020 if 2020 in years else years[0]
+            default_start = 2021 if 2021 in years else (2020 if 2020 in years else years[0])
             default_end = 2025 if 2025 in years else years[-1]
             c1, c2, c3 = st.columns([1, 1, 1])
             with c1:
@@ -3274,6 +4222,7 @@ def section_imports():
                 "Start Share (%)": f"{start_label} % Share",
                 "End Share (%)": f"{end_label} % Share",
             })
+            render_excel_download("Download this tab as Excel", {"3.12 Import Countries": top_df}, "3_12_import_countries.xlsx", key=f"dl_imp_tab_312_{start_year}_{end_year}")
             render_table(
                 top_df[["Country", f"{start_label} (US$ mn)", f"{start_label} % Share", f"{end_label} (US$ mn)", f"{end_label} % Share", "Change (US$ mn)", "Growth (%)"]],
                 {
@@ -3303,6 +4252,58 @@ def section_imports():
                     fig.update_traces(textinfo="percent+label")
                     fig.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=40, b=10))
                     st.plotly_chart(fig, use_container_width=True)
+
+            share_left, share_right = st.columns(2)
+            with share_left:
+                share_plot = top_df[["Country", f"{end_label} % Share"]].sort_values(f"{end_label} % Share")
+                share_fig = go.Figure()
+                share_fig.add_trace(
+                    go.Bar(
+                        y=share_plot["Country"],
+                        x=share_plot[f"{end_label} % Share"],
+                        orientation="h",
+                        name=f"{end_label} % Share",
+                        marker_color="#7a1f5c",
+                    )
+                )
+                share_fig.update_layout(
+                    template="plotly_white",
+                    height=430,
+                    margin=dict(l=10, r=10, t=40, b=10),
+                    title=f"{end_label} country share (%)",
+                    xaxis_title="Share (%)",
+                    yaxis_title="",
+                    showlegend=False,
+                )
+                if show_labels:
+                    add_bar_labels(share_fig, "h", "{:,.2f}")
+                st.plotly_chart(share_fig, use_container_width=True)
+            with share_right:
+                growth_plot = top_df[["Country", "Growth (%)"]].copy().sort_values("Growth (%)")
+                growth_plot["color"] = np.where(growth_plot["Growth (%)"] >= 0, "#2e8b57", "#c0392b")
+                growth_fig = go.Figure()
+                growth_fig.add_trace(
+                    go.Bar(
+                        y=growth_plot["Country"],
+                        x=growth_plot["Growth (%)"],
+                        orientation="h",
+                        marker_color=growth_plot["color"],
+                        name="Growth (%)",
+                    )
+                )
+                growth_fig.add_vline(x=0, line_dash="dot", line_color="#4b5563")
+                growth_fig.update_layout(
+                    template="plotly_white",
+                    height=430,
+                    margin=dict(l=10, r=10, t=40, b=10),
+                    title=f"Growth in imports by country: {start_label} to {end_label}",
+                    xaxis_title="Growth (%)",
+                    yaxis_title="",
+                    showlegend=False,
+                )
+                if show_labels:
+                    add_bar_labels(growth_fig, "h", "{:+,.2f}")
+                st.plotly_chart(growth_fig, use_container_width=True)
         else:
             year_map = {2020: "fy2020", 2025: "fy2025"}
             years = sorted(year_map.keys())
@@ -3322,7 +4323,38 @@ def section_imports():
             compare["Change (US$ mn)"] = compare[f"{end_label} (US$ mn)"].fillna(0) - compare[f"{start_label} (US$ mn)"].fillna(0)
             compare["Growth (%)"] = np.where(compare[f"{start_label} (US$ mn)"].fillna(0) != 0, ((compare[f"{end_label} (US$ mn)"].fillna(0) / compare[f"{start_label} (US$ mn)"].fillna(0)) - 1) * 100, np.nan)
             compare = compare.sort_values(f"{end_label} (US$ mn)", ascending=False)
+            top_compare = compare.head(10).copy()
+            render_excel_download("Download this tab as Excel", {"3.12 Import Countries": compare}, "3_12_import_countries.xlsx", key=f"dl_imp_tab_312_fb_{start_year}_{end_year}")
             render_table(compare, {f"{start_label} (US$ mn)": "{:,.2f}", f"{start_label} % Share": "{:,.2f}", f"{end_label} (US$ mn)": "{:,.2f}", f"{end_label} % Share": "{:,.2f}", "Change (US$ mn)": "{:+,.2f}", "Growth (%)": "{:+,.2f}"}, height=430)
+
+            f1, f2 = st.columns(2)
+            with f1:
+                comp_plot = top_compare.sort_values(f"{end_label} (US$ mn)")
+                fig = go.Figure()
+                fig.add_trace(go.Bar(y=comp_plot["Country"], x=comp_plot[f"{start_label} (US$ mn)"], orientation="h", name=start_label, marker_color="#d9ead3"))
+                fig.add_trace(go.Bar(y=comp_plot["Country"], x=comp_plot[f"{end_label} (US$ mn)"], orientation="h", name=end_label, marker_color="#b88746"))
+                fig.update_layout(barmode="group", template="plotly_white", height=430, margin=dict(l=10, r=10, t=10, b=10), xaxis_title="US$ mn", yaxis_title="")
+                if show_labels:
+                    add_bar_labels(fig, "h", "{:,.0f}")
+                st.plotly_chart(fig, use_container_width=True)
+            with f2:
+                share_plot = top_compare[["Country", f"{end_label} % Share"]].sort_values(f"{end_label} % Share")
+                share_fig = go.Figure()
+                share_fig.add_trace(go.Bar(y=share_plot["Country"], x=share_plot[f"{end_label} % Share"], orientation="h", marker_color="#7a1f5c"))
+                share_fig.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=40, b=10), title=f"{end_label} country share (%)", xaxis_title="Share (%)", yaxis_title="", showlegend=False)
+                if show_labels:
+                    add_bar_labels(share_fig, "h", "{:,.2f}")
+                st.plotly_chart(share_fig, use_container_width=True)
+
+            growth_plot = top_compare[["Country", "Growth (%)"]].copy().sort_values("Growth (%)")
+            growth_plot["color"] = np.where(growth_plot["Growth (%)"] >= 0, "#2e8b57", "#c0392b")
+            growth_fig = go.Figure()
+            growth_fig.add_trace(go.Bar(y=growth_plot["Country"], x=growth_plot["Growth (%)"], orientation="h", marker_color=growth_plot["color"]))
+            growth_fig.add_vline(x=0, line_dash="dot", line_color="#4b5563")
+            growth_fig.update_layout(template="plotly_white", height=430, margin=dict(l=10, r=10, t=40, b=10), title=f"Growth in imports by country: {start_label} to {end_label}", xaxis_title="Growth (%)", yaxis_title="", showlegend=False)
+            if show_labels:
+                add_bar_labels(growth_fig, "h", "{:+,.2f}")
+            st.plotly_chart(growth_fig, use_container_width=True)
 
     with tabs[3]:
         region_hist = load_entity_year_wide_workbook(
@@ -3332,7 +4364,7 @@ def section_imports():
         )
         if not region_hist.empty:
             years = sorted([c for c in region_hist.columns if isinstance(c, int)])
-            default_start = 2020 if 2020 in years else years[0]
+            default_start = 2021 if 2021 in years else (2020 if 2020 in years else years[0])
             default_end = 2025 if 2025 in years else years[-1]
             r1, r2 = st.columns(2)
             with r1:
@@ -3343,6 +4375,7 @@ def section_imports():
             comp = compare_country_product(region_hist.rename(columns={"region": "country"}), start_year, end_year).rename(columns={"Country": "Region"})
             start_label = fy_label_generic(start_year)
             end_label = fy_label_generic(end_year)
+            render_excel_download("Download this tab as Excel", {"3.13 Import Regions": comp}, "3_13_import_regions.xlsx", key=f"dl_imp_tab_313_{start_year}_{end_year}")
             render_table(
                 comp[["Region", "Start Value", "End Value", "Start Share (%)", "End Share (%)", "Change (US$ mn)", "Growth (%)"]].rename(columns={
                     "Start Value": f"{start_label} (US$ mn)",
@@ -3370,7 +4403,7 @@ def section_imports():
             st.plotly_chart(fig, use_container_width=True)
         else:
             df = df_from("import_regions")
-            region_years = [2020, 2025]
+            region_years = [2021, 2025]
             r1, r2 = st.columns(2)
             with r1:
                 start_year = st.selectbox("Start year", region_years, format_func=fy_label_generic, key="imp_region_start_fallback")
@@ -3379,7 +4412,7 @@ def section_imports():
                 end_year = st.selectbox("End year", end_options, index=len(end_options)-1, format_func=fy_label_generic, key="imp_region_end_fallback")
             start_label = fy_label_generic(start_year)
             end_label = fy_label_generic(end_year)
-            year_to_cols = {2020: ("fy2020_mn", "fy2020_share_pct"), 2025: ("fy2025_mn", "fy2025_share_pct")}
+            year_to_cols = {2021: ("fy2021_mn", "fy2021_share_pct"), 2025: ("fy2025_mn", "fy2025_share_pct")}
             start_val_col, start_share_col = year_to_cols[start_year]
             end_val_col, end_share_col = year_to_cols[end_year]
             table = df.rename(columns={
@@ -3389,6 +4422,7 @@ def section_imports():
                 end_val_col: f"{end_label} (US$ mn)",
                 end_share_col: f"{end_label} % Share",
             })[["Region", f"{start_label} (US$ mn)", f"{end_label} (US$ mn)", f"{start_label} % Share", f"{end_label} % Share"]]
+            render_excel_download("Download this tab as Excel", {"3.13 Import Regions": table}, "3_13_import_regions.xlsx", key=f"dl_imp_tab_313_fb_{start_year}_{end_year}")
             render_table(table, {f"{start_label} (US$ mn)": "{:,.2f}", f"{end_label} (US$ mn)": "{:,.2f}", f"{start_label} % Share": "{:,.2f}", f"{end_label} % Share": "{:,.2f}"}, height=430)
 
 
@@ -3414,6 +4448,7 @@ def section_dta():
             "dta_growth_pct": "DTA Growth (%)",
             "sez_growth_pct": "SEZ Growth (%)",
         })
+        render_excel_download("Download this tab as Excel", {"3.14a DTA SEZ Recent": table}, "3_14a_dta_sez_recent.xlsx", key="dl_dta_recent")
         render_table(
             table[["Year", "DTA (US$ mn)", "SEZ (US$ mn)", "Total Exports (US$ mn)", "DTA % Share", "SEZ % Share", "DTA Growth (%)", "SEZ Growth (%)"]],
             {
@@ -3446,14 +4481,16 @@ def section_dta():
     with tabs[1]:
         df = df_from("dta_sez_long").copy()
         df["year_display"] = df["year"].astype(str).map(span_from_single_year_label)
-        render_table(df.rename(columns={
+        long_table = df.rename(columns={
             "year_display":"Year",
             "dta_mn":"DTA (US$ mn)",
             "sez_mn":"SEZ (US$ mn)",
             "total_mn":"Total Exports (US$ mn)",
             "dta_share_pct":"DTA % share",
             "sez_share_pct":"SEZ % share",
-        })[["Year","DTA (US$ mn)","SEZ (US$ mn)","Total Exports (US$ mn)","DTA % share","SEZ % share"]], {
+        })[["Year","DTA (US$ mn)","SEZ (US$ mn)","Total Exports (US$ mn)","DTA % share","SEZ % share"]]
+        render_excel_download("Download this tab as Excel", {"3.14b DTA SEZ Long": long_table}, "3_14b_dta_sez_long.xlsx", key="dl_dta_long")
+        render_table(long_table, {
             "DTA (US$ mn)":"{:,.2f}",
             "SEZ (US$ mn)":"{:,.2f}",
             "Total Exports (US$ mn)":"{:,.2f}",
@@ -3476,13 +4513,15 @@ def section_fdi():
     )
     df = df_from("fdi")
     df["year_display"] = df["year"].astype(str).map(span_from_single_year_label)
-    render_table(df.rename(columns={
+    fdi_table = df.rename(columns={
         "year_display":"Year",
         "india_fdi_mn":"FDI Equity Inflows in India (US$ mn)",
         "gj_fdi_mn":"FDI Equity Inflows in G&J Sector (US$ mn)",
         "gj_growth_pct":"% Growth of FDI in G&J Sector",
         "gj_share_pct":"% Share of FDI Inflows in G&J Sector",
-    }), {
+    })
+    render_excel_download("Download this section as Excel", {"3.15 FDI Inflows": fdi_table}, "3_15_fdi_inflows.xlsx", key="dl_fdi")
+    render_table(fdi_table, {
         "FDI Equity Inflows in India (US$ mn)":"{:,.2f}",
         "FDI Equity Inflows in G&J Sector (US$ mn)":"{:,.2f}",
         "% Growth of FDI in G&J Sector":"{:+,.2f}",
